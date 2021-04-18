@@ -18,10 +18,13 @@ define( 'IVS_MEELOOP_PORTAAL', __FILE__ );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/defs.php' );
 
 // Tell WordPress what to do when plugin has been activated
-register_activation_hook( __FILE__, array( 'IVSMeeloopPortaal', 'on_activation' ) );
+
+// HAS BEEN TEMPORARILY DISABLED DUE TO ERROR MESSAGE 18-4-2021
+//register_activation_hook( __FILE__, array( 'IVSMeeloopPortaal', 'on_activation' ) );
 
 // Tell WordPress what to do when plugin has been deactivated
-register_deactivation_hook( __FILE__, array( 'IVSMeeloopPortaal', 'on_deactivation' ) );
+// HAS BEEN TEMPORARILY DISABLED DUE TO ERROR MESSAGE 18-4-2021
+// register_deactivation_hook( __FILE__, array( 'IVSMeeloopPortaal', 'on_deactivation' ) );
 
 /**
  * Class to setup the plugin
@@ -42,7 +45,7 @@ class IVSMeeloopPortaal {
         do_action( 'ivs_meeloop_portaal_pre_init' );
 
         // Load the plugin
-        add_action ( 'init', array( $this, 'init' ), 1 );
+        // add_action ( 'init', array( $this, 'init' ), 1 );
     }
 
     /**
@@ -55,7 +58,7 @@ class IVSMeeloopPortaal {
         // If user cannot activate plugins, do nothing
         if ( ! current_user_can( 'activate_plugins' ) ) return;
 
-        $plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
+        //$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
 
         check_admin_referer('deactivate-plugin_${plugin}' );
 
