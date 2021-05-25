@@ -76,7 +76,7 @@ class IVSMeeloopPortaal {
                 <script type=\"text/javascript\">
                 setTimeout(function() { 
                     
-                    document.querySelector(\"#post-$post->ID .post-state\").style=\"margin-right: 2rem; padding: 0 2rem; color: #000; font-weight: bold; background: #e6bc28\"; 
+                    document.querySelector(\"#post-$post->ID .post-state\").style=\"margin-right: 2rem; padding: 0 2rem; color: #000; font-weight: bold; background: #fdd02a\"; 
 
                     var pageName = document.querySelector('#post-$post->ID .row-title');
                     var postState = document.querySelector('#post-$post->ID .post-state');
@@ -108,12 +108,28 @@ class IVSMeeloopPortaal {
 
         ?>
             <div class="notice notice-info">
-                <p><strong>Ter informatie:</strong> pagina's waarvoor het label <span style="padding: 0 2rem; color: #000; font-weight: bold; background: rgb(230, 188, 40);">IVS MP</span> staat, zijn een onderdeel van het meeloop portaal. Deze <strong>niet</strong> wijzigen.</p>
+                <p><strong>Ter informatie:</strong> pagina's waarvoor het label <span style="padding: 0 2rem; color: #000; font-weight: bold; background: #fdd02a;">IVS MP</span> staat, zijn een onderdeel van het meeloop portaal. Deze <strong>niet</strong> wijzigen.</p>
             </div>
         <?php 
     }
 
+    /**
+     * init
+     * 
+     * Loads the plugin into WordPress
+    */
     public function init() {
+
+        // Load Admin only components
+        if ( is_admin() ) {
+
+            // Load all Admin specific includes
+            $this->requireAdmin();
+
+            // Setup admin page
+            $this->createAdmin();
+
+        }
 
         // Instantiate the class
         $page_view = new PageView();
@@ -125,6 +141,30 @@ class IVSMeeloopPortaal {
         // Load the frontend css
         $page_view->loadFrontendCSS();
         
+    }
+
+    /**
+     * requireAdmin
+     * 
+     * Loads all Admin related files into scope
+    */
+    public function requireAdmin() {
+
+        // Admin controller file
+        require_once IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_DIR . '/IVSMeeloopPortaal_AdminController.php';
+        
+    }
+
+    /**
+     * createAdmin
+     * 
+     * Admin controller functionality
+    */
+    public function createAdmin() {
+
+        // Execute the prepare function
+        IVSMeeloopPortaal_AdminController::prepare();
+
     }
 
     /**

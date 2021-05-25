@@ -1,0 +1,14 @@
+#toplevel_page_admin-overzicht-ivs-meeloop-portaal {
+    background: rgb(253, 208, 42);
+}
+#toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name {
+    font-weight: bold!important;
+}
+#toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name,
+#toplevel_page_admin-overzicht-ivs-meeloop-portaal .dashicons-before.dashicons-admin-home::before {
+    color: black!important;
+}
+
+#toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name:hover {
+    color: #00b9eb !important;
+}
