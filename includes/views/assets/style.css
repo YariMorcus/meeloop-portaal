@@ -1,0 +1,230 @@
+/**
+
+@author: Yari Morcus
+@date: 19-4-2021
+
+[ i ] Please be aware of the following when editing this css:
+The principal that has been followed is mobile first.
+This means for you, the editor, that everything OUTSIDE media queries is meant for mobile,
+and everthing INSIDE media queries is meant for tablet and higher
+
+Don't pollute this css, thank you :D
+
+*/
+
+@font-face {
+    font-family: 'Futura PT Book';
+    src: url('fonts/FuturaPT-Book.eot');
+    src: url('fonts/FuturaPT-Book.eot?#iefix') format('embedded-opentype'),
+        url('fonts/FuturaPT-Book.woff2') format('woff2'),
+        url('fonts/FuturaPT-Book.woff') format('woff'),
+        url('fonts/FuturaPT-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura PT';
+    src: url('fonts/FuturaPT-Bold.eot');
+    src: url('fonts/FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/FuturaPT-Bold.woff2') format('woff2'),
+        url('fonts/FuturaPT-Bold.woff') format('woff'),
+        url('fonts/FuturaPT-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura PT';
+    src: url('fonts/FuturaPT-Heavy.eot');
+    src: url('fonts/FuturaPT-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('fonts/FuturaPT-Heavy.woff2') format('woff2'),
+        url('fonts/FuturaPT-Heavy.woff') format('woff'),
+        url('fonts/FuturaPT-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --ivs-geel: rgb(253, 208, 42);
+    --grey: rgb(112,112,112);
+    --darkgrey: rgb(74,74,74);
+}
+
+.body__area {
+    margin: 2rem auto;
+    width: 90%;
+}
+
+.dashboard__header {
+    margin-bottom: 3rem;
+}
+
+.main__content {
+    border: 3px solid lightgrey;
+    padding: 1rem 3rem;
+}
+
+.heading-1,
+.error__title {
+    font: normal normal 900 30px/38px 'Futura PT';
+    color: var(--grey);
+    text-align: center;
+}
+
+.heading-2 {
+    font: normal normal bold 20px/20px 'Futura PT';
+    color: var(--grey);
+}
+
+.heading-1 {
+    margin: 0;
+}
+
+.error__title {
+    margin-bottom: 0;
+    background-color: var(--ivs-geel);
+}
+
+.dashboard__logo {
+    margin: 0 auto;
+}
+
+.dashboard__nav {
+    padding: 1rem 3rem 3rem;
+    text-align: right;
+    background-color: var(--ivs-geel);
+}
+
+.dashboard__profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.profile__avatar {
+    margin-right: 2rem;
+    border-radius: 100%;
+}
+
+.profile__message {
+    font: normal normal normal 15px/20px 'Futura PT';
+    color: var(--darkgrey);
+}
+
+.profile__avatar,
+.profile__message {
+    display: inline-block;
+}
+
+.logout__link {
+    font: normal normal bold 15px/70px 'Futura PT';
+    color: var(--darkgrey);
+    text-decoration: none;
+}
+
+.snelle__navigatie--ol {
+    margin-left: 0;
+    list-style: none;
+}
+
+.snelle_navigatie--li {
+    margin-left: 0;
+}
+
+.item__datum {
+    border: 5px solid #6FCCDD;
+}
+
+.item__link {
+    text-decoration: none;
+    color: var(--darkgrey);
+}
+
+.item__datum,
+.item__link {
+    font: normal normal normal 25px/33px 'Futura PT';
+    display: block;
+    padding: 3rem 5rem;
+    text-align: center;
+}
+
+.item__opdrachten--container:nth-child(1) {
+    margin-bottom: 2rem;
+}
+
+.item__informatie--container:nth-child(-n+2) {
+    margin-bottom: 2rem;
+}
+
+.item__link {
+    background-color: lightgrey;
+}
+
+@media only screen and (min-width: 767px) {
+    .dashboard__logo {
+        margin-left: 0;
+    }
+
+    .dashboard__nav {
+        padding: 1rem 3rem;
+        display: grid;
+        grid-template-columns: 1fr 120px;
+    }
+
+    .dashboard__logout {
+        line-height: 70px;
+    }
+
+    .main__content {
+        padding: 46px 74px;
+    }
+
+    .snelle__navigatie {
+        display: none;
+    }
+
+    .row-1, 
+    .row-2,
+    .row-3 {
+        display: grid;
+        grid-gap: 0 30px; 
+        align-items: flex-end;
+    }
+
+    .row-1,
+    .row-2,
+    .row-3 {
+        grid-template-columns: repeat(2, minmax(150px, 320px));
+    }
+
+    .item__datum,
+    .item__link {
+        display: flex;
+        height: 16.3rem; /* 163px */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .item__link {
+        border: 5px solid transparent; /* For equal height */
+    }
+
+    .item__opdrachten--container:nth-child(1) {
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (min-width: 1060px) {
+    .row-3 {
+        grid-template-columns: repeat(3, minmax(150px, 320px));
+    }
+
+    .item__informatie--container:nth-child(-n+2) {
+        margin-bottom: 0;
+    }
+
+}

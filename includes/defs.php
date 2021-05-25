@@ -24,6 +24,9 @@ define( 'IVS_MEELOOP_PORTAAL_PLUGIN_DIR', untrailingslashit( dirname( IVS_MEELOO
 // Define the includes directory
 define( 'IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_DIR',  IVS_MEELOOP_PORTAAL_PLUGIN_DIR . '/includes');
 
+// Define the includes/views directory
+define( 'IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_VIEWS_DIR', IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_DIR . '/views' );
+
 // Define the includes/model directory
 define( 'IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR', IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_DIR . '/model' );
 
@@ -33,4 +36,6 @@ define( 'IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_DIR', IVS_MEELOOP_PORTAAL_PLUGIN_DIR .
 // Define the admin/views directory
 define( 'IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR', IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_DIR . '/views');
 
+// Define the name of the ivs-meeloop-templates folder
+define( 'IVS_MEELOOP_PORTAAL_PLUGIN_TEMPLATES_FOLDER_FRONTEND', 'ivs-meeloop-templates' );
 ?>
