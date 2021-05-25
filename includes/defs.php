@@ -36,6 +36,9 @@ define( 'IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_DIR', IVS_MEELOOP_PORTAAL_PLUGIN_DIR .
 // Define the admin/views directory
 define( 'IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR', IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_DIR . '/views');
 
+// Define the admin/assets directory
+define( 'IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_ASSETS_DIR', IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_DIR . '/assets');
+
 // Define the name of the ivs-meeloop-templates folder
 define( 'IVS_MEELOOP_PORTAAL_PLUGIN_TEMPLATES_FOLDER_FRONTEND', 'ivs-meeloop-templates' );
 ?>
