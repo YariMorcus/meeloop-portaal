@@ -1,3 +1,46 @@
+@font-face {
+    font-family: 'Futura PT Book';
+    src: url('fonts/FuturaPT-Book.eot');
+    src: url('fonts/FuturaPT-Book.eot?#iefix') format('embedded-opentype'),
+        url('fonts/FuturaPT-Book.woff2') format('woff2'),
+        url('fonts/FuturaPT-Book.woff') format('woff'),
+        url('fonts/FuturaPT-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura PT';
+    src: url('fonts/FuturaPT-Bold.eot');
+    src: url('fonts/FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/FuturaPT-Bold.woff2') format('woff2'),
+        url('fonts/FuturaPT-Bold.woff') format('woff'),
+        url('fonts/FuturaPT-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura PT';
+    src: url('../../includse/views/assets/fonts/FuturaPT-Heavy.eot');
+    src: url('../../includse/views/assets/fonts/FuturaPT-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('../../includse/views/assets/fonts/FuturaPT-Heavy.woff2') format('woff2'),
+        url('../../includse/views/assets/fonts/FuturaPT-Heavy.woff') format('woff'),
+        url('../../includse/views/assets/fonts/FuturaPT-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --ivs-geel: rgb(253, 208, 42);
+    --grey: #707070;
+    --darkgrey: rgb(74,74,74);
+    --blue: #6FCCDD;
+}
+
 #toplevel_page_admin-overzicht-ivs-meeloop-portaal {
     background: rgb(253, 208, 42);
 }
@@ -11,4 +54,51 @@
 
 #toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name:hover {
     color: #00b9eb !important;
+}
+
+.meeloop-portaal-h1 {
+    margin-bottom: 1rem !important;
+    font: normal normal 900 30px/38px 'Futura PT';
+    color: var(--grey);
+}
+
+#label-opleiding,
+#label-meeloopdag-datum {
+    font: normal normal normal 16px/38px 'Futura PT Book';
+    display: block;
+    margin-bottom: 5px;
+}
+
+#selecteer-opleiding,
+#selecteer-datum {
+    margin-bottom: .6rem;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    padding-left: 3rem;
+    border: 1px solid var(--grey) !important;
+}
+
+#selecteer-opleiding,
+#selecteer-datum, 
+#registreer-meeloopdag {
+    display: block;
+}
+
+#registreer-meeloopdag {
+    font: normal normal 900 14px/38px 'Futura PT';
+    background: var(--blue) !important;
+    border: 1px solid var(--grey) !important;
+    padding: 1rem 2.5rem !important;
+}
+
+#input-naam-docent {
+    display: none;   
+}
+
+.info-formulier {
+    margin-top: 1rem;
+    display: inline-block;
+    background: rgb(253, 208, 42);
+    padding: .4rem;
+    color: black;
 }
