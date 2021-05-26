@@ -76,7 +76,7 @@ class IVSMeeloopPortaal_AdminController {
             // string $menu_slug - The slug name to refer to this menu by
             // Should only include: lowercase alphanumeric, dashes andunderscores
             // Must be unique
-            'toevoegen-meeloopdag-ivs-meeloop-portaal',
+            'toevoegen-meeloopdag',
             // callable $function - The function to be called to output the content for this page
             array( 'IVSMeeloopPortaal_AdminController', 'adminSubMenuToevoegenMeeloopdag' ),
 
@@ -103,7 +103,7 @@ class IVSMeeloopPortaal_AdminController {
     static function adminSubMenuToevoegenMeeloopdag() {
 
         // Include the view for this menu page
-        include IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR . '/admin_toevoegen_meeloopdag.php';
+        include IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR . '/toevoegen_meeloopdag.php';
     }
 
     /**
