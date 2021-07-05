@@ -1,3 +1,10 @@
+/**
+
+@author: Yari Morcus
+@date: 27-5-2021
+
+*/
+
 @font-face {
     font-family: 'Futura PT Book';
     src: url('fonts/FuturaPT-Book.eot');
@@ -36,24 +43,29 @@
 
 :root {
     --ivs-geel: rgb(253, 208, 42);
+    --lightgrey: #F0F2F3;
     --grey: #707070;
     --darkgrey: rgb(74,74,74);
     --blue: #6FCCDD;
 }
 
+#adminmenu li.toplevel_page_admin-overzicht-ivs-meeloop-portaal:hover, #adminmenu li.opensub>a.toplevel_page_admin-overzicht-ivs-meeloop-portaal, #adminmenu li>a.toplevel_page_admin-overzicht-ivs-meeloop-portaal:focus,
 #toplevel_page_admin-overzicht-ivs-meeloop-portaal {
     background: rgb(253, 208, 42);
 }
+
 #toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name {
-    font-weight: bold!important;
-}
-#toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name,
-#toplevel_page_admin-overzicht-ivs-meeloop-portaal .dashicons-before.dashicons-admin-home::before {
-    color: black!important;
+    font-weight: bold !important;
 }
 
-#toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name:hover {
-    color: #00b9eb !important;
+a.toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name, 
+.toplevel_page_admin-overzicht-ivs-meeloop-portaal .dashicons-admin-home::before {
+color: #000 !important;
+}
+
+a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .wp-menu-name,
+a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .dashicons-admin-home::before {
+    color: #fff!important;
 }
 
 .meeloop-portaal-h1 {
@@ -62,33 +74,79 @@
     color: var(--grey);
 }
 
+.meeloop-portaal-h2,
+.acties-formulier {
+    margin: 1.5rem 0;
+}
+
+.meeloop-portaal-h2 {
+    font: normal normal bold 20px "Futura PT";
+    color: var(--grey);
+}
+
+#formulier-toevoegen-meeloopdag {
+    max-width: 260px;
+}
+
+#formulier-toevoegen-meeloopdag,
+#formulier-toevoegen-mailinglist,
+#registreer-meeloop-student {
+    width: 100%;
+}
+
+#formulier-toevoegen-mailinglist {
+    max-width: 340px;
+}
+
 #label-opleiding,
-#label-meeloopdag-datum {
-    font: normal normal normal 16px/38px 'Futura PT Book';
+#label-meeloopdag-datum,
+#label-naam-meeloop-student,
+#label-email-meeloop-student {
     display: block;
     margin-bottom: 5px;
 }
 
+#label-opleiding,
+#label-meeloopdag-datum,
+#label-naam-meeloop-student,
+#label-email-meeloop-student,
+#mailinglist-tabel-data,
+.verwijder-button,
+.verwijderd-message {
+        font: normal normal normal 16px 'Futura PT Book';
+}
+
 #selecteer-opleiding,
-#selecteer-datum {
-    margin-bottom: .6rem;
-    padding-top: .4rem;
-    padding-bottom: .4rem;
-    padding-left: 3rem;
+#selecteer-datum,
+#input-naam-meeloop-student,
+#input-email-meeloop-student {
+    margin-bottom: 1rem;
+    width: 100%;
     border: 1px solid var(--grey) !important;
 }
 
 #selecteer-opleiding,
 #selecteer-datum, 
-#registreer-meeloopdag {
+#registreer-meeloopdag,
+#registreer-meeloop-student {
     display: block;
 }
 
-#registreer-meeloopdag {
-    font: normal normal 900 14px/38px 'Futura PT';
+#registreer-meeloopdag,
+#registreer-meeloop-student,
+#bevestig-actie {
+    margin-left: auto;
+    padding: 1rem 2.5rem !important;
+    font: normal normal 900 14px/20px 'Futura PT';
     background: var(--blue) !important;
     border: 1px solid var(--grey) !important;
-    padding: 1rem 2.5rem !important;
+    cursor: pointer;
+}
+
+#registreer-meeloop-student {
+    margin-bottom: 1rem;
+    max-width: 240px;
+    white-space: normal;
 }
 
 #input-naam-docent {
@@ -101,4 +159,90 @@
     background: rgb(253, 208, 42);
     padding: .4rem;
     color: black;
+}
+
+.acties-formulier {
+    padding: .7rem 2rem;
+    background: var(--lightgrey);
+    border: 1px solid var(--grey) !important;
+}
+
+#mailinglist-tabel {
+    border-collapse: collapse;
+    background: #fff;
+}
+
+#checkbox-selecteer-allen {
+    display: block;
+    margin: 1rem auto 0;
+}
+
+#mailinglist-tabel-header {
+    border-bottom: 2px solid var(--grey) !important;
+}
+
+#mailinglist-tabel-header > th,
+.verwijder-button {
+    font-weight: 700;
+}
+#mailinglist-tabel-header > th:nth-child(1) {
+    padding: 1rem;
+}
+
+#mailinglist-tabel-header > th:nth-child(2),
+#mailinglist-tabel-header > th:nth-child(3) {
+    padding-left: 1rem;
+    text-align: left;
+}
+
+#mailinglist-tabel-header > th:nth-child(4) {
+    padding: 2rem 3rem;
+}
+
+#mailinglist-tabel-header > th:nth-child(5) {
+    padding: 2rem 1rem;
+}
+
+#mailinglist-tabel-rij > td:nth-child(1) {
+    padding: 1rem;
+    text-align: center;
+}
+
+#mailinglist-tabel-rij > #mailinglist-tabel-data:nth-child(2), 
+#mailinglist-tabel-rij > #mailinglist-tabel-data:nth-child(3) {
+    padding-right: 2rem;
+    padding-left: 1rem;
+    text-align: left;
+}
+
+#mailinglist-tabel-rij > #mailinglist-tabel-data:nth-child(4),
+#mailinglist-tabel-rij > #mailinglist-tabel-data:nth-child(5) {
+    text-align: center;
+}
+
+#mailinglist-tabel-data {
+    border: 1px solid var(--grey) !important;
+}
+
+.verwijder-button {
+    color: var(--darkgrey);
+    text-decoration: none;
+}
+.toegevoegd-message,
+.verwijderd-message,
+.verzonden-message {
+    padding: 1rem;
+    display: block;
+    color: green;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid green;
+}
+
+.niet-verzonden-message {
+    padding: 1rem;
+    display: block;
+    color: red;
+    font-weight: 700;
+    border: 2px solid red;
 }
