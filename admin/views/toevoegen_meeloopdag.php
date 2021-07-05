@@ -69,10 +69,7 @@ if ( !empty( $post_array ) ) {
             <option value="<?php echo $array->id    ; ?>"><?php echo $array->education_name; ?></option>
             <?php
         }
-        echo 'test';
         ?>d
-            <!-- <option value="Applicatieontwikkeling">Applicatieontwikkeling</option>
-            <option value="Mediavormgeving">Mediavormgeving</option> -->
         </select>
         <label for="selecteer-datum" id="label-meeloopdag-datum">Selecteer hier de meeloopdag datum</label>
         <input type="date" id="selecteer-datum" name="meeloopdag-datum" min="2021-7-5">
