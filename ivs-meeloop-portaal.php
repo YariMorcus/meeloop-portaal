@@ -152,7 +152,6 @@ class IVSMeeloopPortaal {
 
         // Admin controller file
         require_once IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_DIR . '/IVSMeeloopPortaal_AdminController.php';
-        
     }
 
     /**
@@ -179,11 +178,17 @@ class IVSMeeloopPortaal {
 
         if ( ! current_user_can( 'activate_plugins' ) ) return;
 
-        //$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
+        // Include the CreateDatabaseTables class
+        require_once( IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/IVS_DatabaseSetup.php');
 
-        //check_admin_referer('deactivate-plugin_${plugin}' );
+        // Insert the tables
+        IVS_DatabaseSetup::createDBTables();
 
-        //exit( var_dump( $_GET ) );
+        // Insert the data
+        IVS_DatabaseSetup::insertDBData();
+
+        // Add the plugin capabilities
+        IVSMeeloopPortaal::add_plugin_caps();
 
         $page_view = new PageView();
 
@@ -204,6 +209,15 @@ class IVSMeeloopPortaal {
     public static function on_deactivation() {
 
         if ( ! current_user_can( 'activate_plugins' ) ) return;
+        
+        // Include the CreateDatabaseTables class
+        require_once( IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/IVS_DatabaseSetup.php');
+
+        // Remove the database tables
+        IVS_DatabaseSetup::removeDBTables();
+
+        // Remove the plugin specific capabilities
+        IVSMeeloopPortaal::remove_plugin_caps();
 
         $page_view = new PageView();
 
@@ -213,9 +227,124 @@ class IVSMeeloopPortaal {
         // Remove WordPress pages
         $page_view->removePages();
 
-        //$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
+    }
 
-        //exit( var_dump( $_GET ) );
+    /**
+     * get_plugin_roles_and_caps
+     * 
+     * Define the array with plugin specific capabilities per role
+    */
+    public static function get_plugin_roles_and_caps() {
+
+        // Define the desired roles for this plugin
+        return array(
+            /* Is always available - Should be on the first line */
+            array( 
+                'administrator',
+                'Admin',
+                array(
+                    'ivs_mp_read',
+                    'ivs_mp_create',
+                    'ivs_mp_update',
+                    'ivs_mp_delete'
+                ) ),
+            
+            array(
+                'docent',
+                'Docent',
+                array(
+                    'ivs_mp_read',
+                    'ivs_mp_create',
+                    'ivs_mp_update',
+                    'ivs_mp_delete'
+                ) ),
+
+            array(
+                'meeloper',
+                'Meelooper',
+                array(
+                    'ivs_mp_read'
+                ) )
+        );
+
+    }
+
+    /**
+     * add_plugin_caps
+     * 
+     * Add plugin specific capabilities 
+     * Check first for the specific roles
+     * If they not exist, add specific roles
+     * Add plugin specific caps per role
+    */
+    public static function add_plugin_caps() {
+
+        // Include the roles and capabilities definition file
+        require_once plugin_dir_path( __FILE__ ) . 'includes/roles_and_caps_defs.php';
+
+        $role_array = IVSMeeloopPortaal::get_plugin_roles_and_caps();
+
+        // Check for the roles
+        foreach( $role_array as $key => $role_name ) {
+         
+            // Check specific role
+            if ( !( $GLOBALS['wp_roles']->is_role( $role_name[IVS_MP_ROLE_NAME] ) ) ) {
+
+                $role = add_role( 
+                    $role_name[IVS_MP_ROLE_NAME],
+                    $role_name[IVS_MP_ROLE_ALIAS],
+                    array( 'read' => true, 'level_0' => true )
+                 );
+
+            }
+        }
+
+        // Add the capabilities per role
+        foreach( $role_array as $key => $role_name ) {
+
+            // Create the capabilities for this role
+            foreach( $role_name[IVS_MP_ROLE_CAP_ARRAY] as $cap_key => $cap_name ) {
+
+                // Gets the author role
+                $role = get_role( $role_name[IVS_MP_ROLE_NAME] );
+
+                // This only works, because it accesses the class instance.
+                // Would allow the author to edit others' posts for current theme only
+                $role->add_cap( $cap_name );
+
+            }
+        }
+    }
+
+    /**
+     * remove_plugin_caps
+     * 
+     * Remove all the specific capabilities for this plugin
+    */
+    public static function remove_plugin_caps() {
+
+        // Include the roles and capabilities definition file
+        require_once plugin_dir_path( __FILE__ ) . 'includes/roles_and_caps_defs.php';
+
+        // Get the plugin specific capabilities per role
+        $role_array = IVSMeeloopPortaal::get_plugin_roles_and_caps();
+
+        // Add the capabilities per role
+        foreach( $role_array as $key => $role_name ) {
+
+            // Create the capabilities for this role
+            foreach( $role_name[IVS_MP_ROLE_CAP_ARRAY] as $cap_key => $cap_name ) {
+
+                // Get the specific role
+                $role = get_role( $role_name[IVS_MP_ROLE_NAME] );
+
+                // This only works, because it accesses the class instance.
+                $role->remove_cap( $cap_name );
+
+            }
+
+        }
+
     }
 
 }
