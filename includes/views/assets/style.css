@@ -37,7 +37,7 @@ Don't pollute this css, thank you :D
 }
 
 @font-face {
-    font-family: 'Futura PT';
+    font-family: 'Futura PT Heavy';
     src: url('fonts/FuturaPT-Heavy.eot');
     src: url('fonts/FuturaPT-Heavy.eot?#iefix') format('embedded-opentype'),
         url('fonts/FuturaPT-Heavy.woff2') format('woff2'),
@@ -50,8 +50,9 @@ Don't pollute this css, thank you :D
 
 :root {
     --ivs-geel: rgb(253, 208, 42);
-    --grey: rgb(112,112,112);
-    --darkgrey: rgb(74,74,74);
+    --grey: rgb(112, 112, 112);
+    --darkgrey: rgb(74, 74, 74);
+    --table-header-color: rgb(240, 242, 243);
 }
 
 .body__area {
