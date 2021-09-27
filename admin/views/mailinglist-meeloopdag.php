@@ -83,6 +83,10 @@ if ( !empty( $get_array ) ) {
 
 }
 ?>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="wrap">
     <h1 class="meeloop-portaal-h1">Mailinglist meeloop studenten</h1>
     <h2 class="meeloop-portaal-h2">Voeg nieuwe meeloop student toe</h2>
@@ -123,7 +127,7 @@ if ( !empty( $get_array ) ) {
     </form> <!-- #formulier-toevoegen-mailinglist -->
 
     <h2 class="meeloop-portaal-h2">Mailinglist</h2>
-    <form action="<?php echo $base_url; ?>" method="post">
+    <form action="<?php echo $base_url; ?>" method="post" id="acties-form">
         <div class="acties-formulier">
             <label for="actie" id="label-actie">Geselecteerde meeloop studenten</label>
             <select name="actie" id="selecteer-actie" class="selecteer-actie-1">
@@ -183,8 +187,100 @@ if ( !empty( $get_array ) ) {
         </div> <!-- .acties-formulier -->      
 
     </form>
+    <div id="dialog-confirm" title="Empty the recycle bin?">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Weet u zeker dat u deze meeloop student(en) wilt verwijderen? U kunt dit niet ongedaan maken.</p>
+    </div>
 </div> <!-- .wrap -->
 <script>
+
+// Prevent user from opening deletion link
+// Otherwise modal dialog for confirmation won't show
+const x = document.getElementsByClassName('verwijder-button');
+for (let i = 0; i < x.length; i++) {
+
+    x[i].addEventListener('click', function(e) {
+        e.preventDefault();
+    });
+}
+
+// show confirm dialog when user deletes meeloop student
+jQuery(document).ready(function($) {
+
+    function modal(deletion_link) {
+
+            // Open the dialog when anchor is pressed
+            jQuery('#dialog-confirm').dialog({
+
+                // Configuration settings
+                title: "Meeloop student(en) verwijderen?",
+                modal: true,
+                draggable: false,
+                resizable: false,
+                width: 400,
+                buttons: [
+                    {
+                        text: 'Annuleer verwijdering',
+                        click: function() {
+
+                            // Close dialog when button is pressed
+                            $(this).dialog('close');
+                            
+                        }
+                    },
+                    {
+                        text: 'Verwijderen',
+                        click: function() {
+                            
+                            // Replace current URL with deletion URL, ONLY if deletion_link is specified
+                            // NOTE: this is a different URL than the action 'verwijderen-meeloop-student' (batch)
+                            if (deletion_link) {
+                                window.location.replace(deletion_link);
+                                return;
+                            }
+
+                            // Close modal dialog
+                            $(this).dialog('close');
+
+                            // Remove the preventDefault, otherwise form WON'T be submitted
+                            $('#bevestig-actie').off('click');
+
+                            // Submit form
+                            $('#bevestig-actie').click();
+                            
+                        }
+                    }
+                ]
+            });
+
+    }
+    
+    // Attach eventListener to bevestig-actie button    
+    $("#bevestig-actie").bind('click', function(e) {
+        
+        // If actie === 'verwijderen-meeloop-student', show modal dialog for confirmation
+        if ($("#selecteer-actie").children('option:selected').val() === 'verwijderen-meeloop-student') {
+            
+            // Prevent the button from submitting the form
+            e.preventDefault();
+
+            // Show modal dialog
+            modal(null);
+            
+        }
+    });
+
+    // Attach eventListener to verwijder-button    
+    $('.verwijder-button').on('click', function() {
+
+        // Retrieve the href value attr. of currently pressed anchor
+        const HREF_VALUE = this.getAttribute('href');         
+
+        modal(HREF_VALUE);
+
+    })        
+
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Retrieve the input fields
     const INPUT_NAAM_MEELOOP_STUDENT = document.getElementById('input-naam-meeloop-student');

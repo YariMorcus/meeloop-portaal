@@ -103,6 +103,27 @@ class IVSMeeloopPortaal_AdminController {
 
         );
 
+        add_submenu_page(
+
+            // string $parent_slug - The slug name for the parent menu
+            'admin-overzicht-ivs-meeloop-portaal',
+            // string $page_title - The text to be displayed in the title tag of the page
+            // when menu is selected
+            __( 'Opleidingen - IVS Meeloop Portaal', 'ivs-meeloop-portaal' ),
+            // string $menu_title - The text to be used for the menu
+            __( 'Opleidingen', 'ivs-meeloop-portaal' ),
+            // string $capability - The capability required for this menu to be displayed
+            // to the user
+            'manage_options',
+            // string $menu_slug - The slug name to refer to this menu by
+            // Should only include lowercase alphanumeric, dashes and underscores
+            // Must be unique
+            'opleidingen-meeloopdag',
+            // callable $function - The function to be called to output the content for this page
+            array( 'IVSMeeloopPortaal_AdminController', 'adminSubMenuOpleidingenMeeloopdag' )
+
+        );
+
     }
 
     /**
@@ -124,7 +145,7 @@ class IVSMeeloopPortaal_AdminController {
     static function adminSubMenuToevoegenMeeloopdag() {
 
         // Include the view for this menu page
-        include IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR . '/toevoegen_meeloopdag.php';
+        include IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR . '/toevoegen-meeloopdag.php';
     }
 
     /**
@@ -138,6 +159,18 @@ class IVSMeeloopPortaal_AdminController {
         include IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR . '/mailinglist-meeloopdag.php';
 
     }
+
+    /**
+     * adminSubMenuOpleidingenMeeloopdag
+     * 
+     * The admin opleidingen page of the IVS meeloop portaal plugin
+     * 
+    */
+    static function adminSubMenuOpleidingenMeeloopdag() {
+
+        // Include the view for this menu page
+        include IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR . '/opleidingen-meeloopdag.php';
+    } 
 
     /**
      * loadAdminCSS

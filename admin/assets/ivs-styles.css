@@ -101,7 +101,8 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-opleiding,
 #label-meeloopdag-datum,
 #label-naam-meeloop-student,
-#label-email-meeloop-student {
+#label-email-meeloop-student,
+#label-toevoegen-opleiding {
     display: block;
     margin-bottom: 5px;
 }
@@ -119,7 +120,8 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #selecteer-opleiding,
 #selecteer-datum,
 #input-naam-meeloop-student,
-#input-email-meeloop-student {
+#input-email-meeloop-student,
+#input-toevoegen-opleiding {
     margin-bottom: 1rem;
     width: 100%;
     border: 1px solid var(--grey) !important;
@@ -128,19 +130,34 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #selecteer-opleiding,
 #selecteer-datum, 
 #registreer-meeloopdag,
-#registreer-meeloop-student {
+#registreer-meeloop-student,
+#toevoegen-opleiding {
     display: block;
 }
 
 #registreer-meeloopdag,
 #registreer-meeloop-student,
-#bevestig-actie {
+#bevestig-actie,
+#toevoegen-meeloopdag {
     margin-left: auto;
     padding: 1rem 2.5rem !important;
     font: normal normal 900 14px/20px 'Futura PT';
     background: var(--blue) !important;
     border: 1px solid var(--grey) !important;
     cursor: pointer;
+}
+
+#anchor-edit-opleiding {
+    display: none;
+}
+
+#toevoegen-opleiding {
+    width: 100%;
+}
+
+#toevoegen-meeloopdag {
+    margin-bottom: 1rem;
+    display: block;
 }
 
 #registreer-meeloop-student {
@@ -245,4 +262,94 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     color: red;
     font-weight: 700;
     border: 2px solid red;
+}
+
+.ui-dialog-titlebar {
+    background: var(--ivs-geel)!important;
+}
+
+.ui-dialog-buttonset > button:nth-child(2) {
+    background: #cf352e;
+    color: white;
+}
+
+#dialog-confirm { display: none; }
+
+.main-heading-admin, 
+.subheading-2-admin {
+    color: var(--grey);
+}
+.main-heading-admin {
+    font-family: 'Futura PT Heavy';
+}
+
+.subheading-2-admin {
+    font-family: 'Futura PT Book';
+    font-size: 20px;
+}
+
+.paragraph-main {
+    font-family: 'Futura PT Book';
+    font-size: 15px;
+    white-space: pre-line;
+}
+
+.table-header {
+    text-align: left;
+    border: 1px solid var(--grey);
+}
+
+.admin-meeloop-table {
+    width: 100%;
+}
+
+.admin-meeloop-table th:first-child, 
+.admin-meeloop-table td:first-child {
+    padding-left: 1.5rem;
+}
+
+.admin-meeloop-table th:last-child,
+.admin-meeloop-table td:last-child {
+    display: none;
+}
+
+.admin-meeloop-table tr {
+    height: 60px;
+}
+
+.admin-meeloop-table td:first-child {
+    padding-right: 2rem;
+}
+
+.admin-meeloop-table td:last-child {
+    padding: 0 1rem;
+}
+
+@media only screen and (min-width: 468px) {   
+    .admin-meeloop-table {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .admin-meeloop-table {
+        width: initial;
+    }
+    .admin-meeloop-table th:last-child,
+    .admin-meeloop-table td:last-child {
+        display: initial;
+    }
+    .two-column-layout {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+    }
+    #anchor-edit-opleiding {
+    display: block;
+}    
+}
+@media only screen and (min-width: 800px) {
+    .two-column-layout {
+        display: grid;
+        grid-template-columns: 400px 300px;
+    }    
 }

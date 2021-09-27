@@ -119,7 +119,7 @@ class Mailinglist {
                 // Loop over the array that holds the user ID's
                 // User ID's are stored in named key 0
                 foreach( $post_array[0] as $user_id ) {
-                    
+
                     // Pass each checkbox value in database query for deletion
                     $this->removeMeeloopstudentFromMailinglist( null, $user_id );
 
