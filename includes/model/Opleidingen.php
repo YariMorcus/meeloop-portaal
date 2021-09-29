@@ -19,7 +19,17 @@ class Opleidingen {
 
             // Submit button
             'toevoegen-opleidingsnaam' => array( 'filter', FILTER_SANITIZE_STRING ),
-            // Opleidingsnaam
+
+            // Update button
+            'update-opleidingsnaam' => array( 'filter', FILTER_SANITIZE_STRING ),
+
+            // Id opleidingsnaam (updaten)
+            'id-opleidingsnaam' => array( 'filter', FILTER_SANITIZE_STRING ),
+
+            // Update opleidingsnaam
+            'update-input-opleidingsnaam' => array( 'filter', FILTER_SANITIZE_STRING ),
+
+            // Toevoegen opleidingsnaam
             'input-opleidingsnaam' => array( 'filter', FILTER_SANITIZE_STRING )
         );
 
@@ -27,6 +37,57 @@ class Opleidingen {
         $inputs = filter_input_array( INPUT_POST, $post_check_array );
 
         return $inputs;
+
+    }
+
+    /**
+     * getGetValues
+     * Filter input and retrieve GET input params
+     * 
+     * @return array containing known GET input fields
+    */
+    public function getGetValues() {
+
+        $get_check_array = array(
+
+            // Update action 
+            'action' => array( 'filter', FILTER_SANITIZE_STRING ),
+
+            // ID of the education name
+            'id' => array( 'filter', FILTER_VALIDATE_INT )
+
+        );
+
+        // Get filtered input
+        $filtered_input = filter_input_array( INPUT_GET, $get_check_array );
+
+        return $filtered_input;
+
+    }
+
+    /**
+     * Check the action, and perform action on:
+     * -update
+     * @param type Array - All get vars and values
+    */
+    public function handleGetAction($get_array) {
+
+        $action = '';
+
+        $action_value = $get_array['action'];
+
+        switch( $action_value ) {
+            case 'update':
+                if ( !is_null( $get_array['id'] ) ) {
+                    $action = $action_value;
+                }
+                break;
+            default:
+                // Oops 
+                break;
+        }
+
+        return $action;
 
     }
 
@@ -64,6 +125,55 @@ class Opleidingen {
         } catch(Exception $exc) {
             // @todo: add error handling
             echo '<pre>' . $exc->getTraceAsString() . '</pre>';
+        }
+
+        return TRUE;
+
+    }
+
+    /**
+     * 
+     * @global wpdb - The WordPress Database Interface
+     * @param type $input_array - post_array
+     * @return boolean TRUE on success, otherwise FALSE
+    */
+    public function update($input_array) {
+
+        try {
+
+            $array_fields = array( 'id-opleidingsnaam', 'update-input-opleidingsnaam' );
+            $table_fields = array( 'opleiding_id', 'naam_opleiding' );
+            $data_array = array();
+
+            // Check if the fields are empty
+            foreach( $array_fields as $field ) {
+                if ( empty( $input_array[$field] ) ) {
+                    throw new Exception( __( 'Fields are mandatory' ) );
+                }
+
+                // Add data_array
+                $data_array[] = $input_array[$field];
+            }
+
+            global $wpdb;
+
+            // Update query
+            // $wpdb->query( $wpdb->prepare( "UPDATE " . $this->getTableName() . " SET `naam_opleiding` = '%s' WHERE `ivs_mp_opleiding`.`opleiding_id` = %d;", $input_array['update-input-opleidingsnaam'], $input_array['id-opleidingsnaam'] ) );
+
+            $wpdb->update(
+                $this->getTableName(), 
+                $this->getTableDataArray( $data_array ),
+                array( 'opleiding_id' => $input_array['id-opleidingsnaam'] ), // WHERE
+                array( '%s' ),                                          // Data format
+                array( '%d' )
+            );
+
+        } catch(Exception $exc) {
+            // @todo: add error handling
+            echo '<pre>' . $exc->getTraceAsString() . '</pre>';
+            $this->last_error = $exc->getMessage();
+
+            return FALSE;
         }
 
         return TRUE;
@@ -133,7 +243,7 @@ class Opleidingen {
     */
     public function setID($opleiding_ID) {
     
-        if ( is_int( $opleiding_ID ) ) {
+        if ( is_int( intval( $opleiding_ID ) ) ) {
             $this->opleiding_ID = $opleiding_ID;
         }
 
@@ -162,6 +272,91 @@ class Opleidingen {
     */
     public function getNaam() {
         return $this->naam_opleiding;
+    }
+
+    /**
+     * 
+     * @return type String - Table name
+    */
+    private function getTableName() {
+        
+        return $table = 'ivs_mp_opleiding';
+    }
+
+    /**
+     * The function takes the input data array and changes the indexes
+     * to the column names
+     * In case of update or insert action
+     * 
+     * @param type $input_data_array - data array (id-opleidingsnaam, update-input-opleidingsnaam)
+     * @param type $action = update | insert
+     * 
+     * @return type array with column index and values OR FALSE
+    */
+    private function getTableDataArray($input_data_array, $action = '') {
+
+        $keys = $this->getTableColumnNames( $this->getTableName() );
+
+        // Get data array with table colum names
+        // NULL if columns and data does not match in count
+        //
+        // NOTE: Order of the fields shall be the same for both!
+        $table_data = array_combine( $keys, $input_data_array );
+
+        switch( $action ) {
+            case 'update': // Intended fall through
+            case 'insert':
+
+                // Remove the index -> is primary key and can therefore NOT be changed
+                if ( !empty( $table_data ) ) {
+                    echo 'zie je dit?';
+
+                    unset( $table_data[ 'opleiding_id' ] );
+
+                }
+
+                break;
+            default:
+                // Oops
+        }
+
+        echo '<pre>';
+        var_dump($table_data);
+        echo '</pre>';
+        return $table_data;
+
+    }
+
+    /**
+     * Get the colum names of the specified table
+     * @global wpdb - The WordPress Database Interface
+     * @return type $table
+    */
+    private function getTableColumnNames($table) {
+
+        global $wpdb;
+
+        try {
+
+            $result_array = $wpdb->get_results( "SELECT `COLUMN_NAME` "."FROM INFORMATION_SCHEMA.COLUMNS"." WHERE `TABLE_SCHEMA` = '" . DB_NAME . "' AND TABLE_NAME = '" . $this->getTableName() . "'", ARRAY_A );
+
+            $keys = array();
+
+            foreach( $result_array as $idx => $row ) {
+                $keys[$idx] = $row['COLUMN_NAME'];
+            }
+
+            return $keys;
+
+        } catch(Exception $exc) {
+
+            // @Todo: add error handling
+            echo '<pre>' . $exc->getTraceAsString() . '</pre>';
+            $this->last_error = $exc->getMessage();
+            return FALSE;
+
+        }
+
     }
 
 }
