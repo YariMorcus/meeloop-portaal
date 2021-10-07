@@ -42,6 +42,7 @@ class Meeloopdag {
      * getOpleidingen
      * 
      * Retrieve all the opleidingen from the database
+     * @return $return_array - Array containing all the registered educations
     */
     public function getOpleidingenList() {
 

@@ -54,10 +54,9 @@ class IVSMeeloopPortaal_AdminController {
             array( 'IVSMeeloopPortaal_AdminController', 'adminMenuPage' ),
             // string $icon_url - The URL to the icon to be used for this menu
             // -- optional
-            'dashicons-admin-home',
+            'dashicons-admin-home'
             // int $position - The position in the menu order this item should appear
             // -- optional
-            2
 
         );
 
@@ -78,7 +77,7 @@ class IVSMeeloopPortaal_AdminController {
             // Must be unique
             'toevoegen-meeloopdag',
             // callable $function - The function to be called to output the content for this page
-            array( 'IVSMeeloopPortaal_AdminController', 'adminSubMenuToevoegenMeeloopdag' ),
+            array( 'IVSMeeloopPortaal_AdminController', 'adminSubMenuToevoegenMeeloopdag' )
 
         );
 

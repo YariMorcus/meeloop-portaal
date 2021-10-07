@@ -109,24 +109,7 @@ class IVS_DatabaseSetup {
                 'status' => 'Geregistreerd'
             )
         );
-
-        // Insert first row in table 'ivs_mp_opleiding'
-        $wpdb->insert(
-            $table_names[3],
-            array(
-                'opleiding_id' => 1,
-                'naam_opleiding' => 'Applicatieontwikkeling'
-            )
-        );
-
-        // Insert second row in table 'ivs_mp_opleiding'
-        $wpdb->insert(
-            $table_names[3],
-            array(
-                'opleiding_id' => 2,
-                'naam_opleiding' => 'Mediavormgeving'
-            )
-        );
+        
     }
 
     /**
