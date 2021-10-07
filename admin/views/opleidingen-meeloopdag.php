@@ -19,10 +19,10 @@ $post_array = $opleidingen->getPostValues();
 $get_array = $opleidingen->getGetValues();
 
 //*
-echo '<pre>';
-echo __FILE__ . __LINE__;
+// echo '<pre>';
+// echo __FILE__ . __LINE__;
 // var_dump($post_array);
-echo '</pre>';
+// echo '</pre>';
 //*/
 
 // Collect the errors
@@ -128,7 +128,7 @@ if ( !empty( $get_array ) ) {
                                     ?>
                                     <td class="td-no-edit-input"><?php echo $opleiding->getNaam(); ?></td>
                                     <td><a href="<?php echo $update_url; ?>" id="anchor-edit-opleiding">
-                                    <img src="<?php echo plugin_dir_url( __DIR__ ) . 'assets/icons/pencil-icon.svg'; ?>" alt="" width="25" height="25"></a></td>
+                                    <img src="<?php echo plugin_dir_url( __DIR__ ) . 'assets/icons/pencil-icon.svg'; ?>" alt="" width="16" height="16"></a></td>
                                     <?php
                                 }
                             ?>

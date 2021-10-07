@@ -34,9 +34,9 @@ class Opleidingen {
         );
 
         // Get filtered input
-        $inputs = filter_input_array( INPUT_POST, $post_check_array );
+        $post_inputs = filter_input_array( INPUT_POST, $post_check_array );
 
-        return $inputs;
+        return $post_inputs;
 
     }
 
@@ -319,10 +319,7 @@ class Opleidingen {
             default:
                 // Oops
         }
-
-        echo '<pre>';
-        var_dump($table_data);
-        echo '</pre>';
+        
         return $table_data;
 
     }
