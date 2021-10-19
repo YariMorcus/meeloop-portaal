@@ -1,9 +1,9 @@
 <?php 
 // Include the model
-require_once IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/Opleidingen.php';
+require_once IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/Opleiding.php';
 
 // Declare class variable
-$opleidingen = new Opleidingen();
+$opleidingen = new Opleiding();
 
 // Set base URL to current file, and add page specific vars
 $base_url = get_admin_url() . 'admin.php';
@@ -97,6 +97,7 @@ if ( !empty( $get_array ) ) {
                     <th></th>
                 </tr>
                 <?php 
+                    // If user hasn't registered any education names, inform user, and don't show table rows
                     if( $opleidingen->getNrOfRegisteredEducation() < 1 ) { 
                 ?>
                 <tr>
@@ -104,6 +105,7 @@ if ( !empty( $get_array ) ) {
                 </tr>
                 <?php 
                     } else { 
+                        // Store all registered educations in $opleidingen_list
                         $opleidingen_list = $opleidingen->getEducationList();
 
                         // Loop over the array containing the objects that contain the data
@@ -118,6 +120,7 @@ if ( !empty( $get_array ) ) {
                         ?>
                         <tr>
                             <?php 
+                                // If user wants to update an education name, show form field and update button
                                 if ( ( $action === 'update') && ( $opleiding->getID() === $get_array['id'] ) ) {
                                     ?>
                                     <td style="display: none;"><input type="hidden" name="id-opleidingsnaam" value="<?php echo $opleiding->getID(); ?>"></td>

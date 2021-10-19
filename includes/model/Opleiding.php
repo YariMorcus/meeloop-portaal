@@ -4,7 +4,7 @@
  * 
  * @author Yari Morcus
 */
-class Opleidingen {
+class Opleiding {
 
     /**
      * getPostValues
@@ -59,21 +59,27 @@ class Opleidingen {
         );
 
         // Get filtered input
-        $filtered_input = filter_input_array( INPUT_GET, $get_check_array );
+        $get_inputs = filter_input_array( INPUT_GET, $get_check_array );
 
-        return $filtered_input;
+        return $get_inputs;
 
     }
 
     /**
-     * Check the action, and perform action on:
-     * -update
+     * handleGetAction
+     * 
+     * Check if user wants to update the education name.
+     * If yes, and education name id is known, return action to show form update field to user
+     * 
      * @param type Array - All get vars and values
+     * if (( !is_null( $get_array['id'] )), education name id supplied? Store action 'update' in $action
     */
     public function handleGetAction($get_array) {
 
+        // Placeholder to store current action of user
         $action = '';
 
+        // Store action supplied in $get_array
         $action_value = $get_array['action'];
 
         switch( $action_value ) {
@@ -83,7 +89,6 @@ class Opleidingen {
                 }
                 break;
             default:
-                // Oops 
                 break;
         }
 
@@ -92,10 +97,15 @@ class Opleidingen {
     }
 
     /**
+     * save
+     * 
+     * Save new education name in database
      * 
      * @global type $wpdb The WordPress Database Interface
      * @param type $input_array containing insert data
      * @return boolean TRUE on success OR FALSE
+     * if ( !isset( $input_array['input-opleidingsnaam'] ) ) - If user forgot to fill in mandatory field, throw an error 
+     * if ( strlen($input_array['input-opleidingsnaam']) < 1 ) - If user forgot to fill in mandatory field, throw an error (extra check)
     */
     public function save($input_array) {
 
@@ -132,10 +142,15 @@ class Opleidingen {
     }
 
     /**
+     * update
+     * 
+     * Save new (updated) education name in database
      * 
      * @global wpdb - The WordPress Database Interface
      * @param type $input_array - post_array
      * @return boolean TRUE on success, otherwise FALSE
+     * if (empty( $input_array[$field] )) - If user forgot to fill in mandatory field, throw an error 
+     * (prevent insertion of empty education name)
     */
     public function update($input_array) {
 
@@ -156,9 +171,6 @@ class Opleidingen {
             }
 
             global $wpdb;
-
-            // Update query
-            // $wpdb->query( $wpdb->prepare( "UPDATE " . $this->getTableName() . " SET `naam_opleiding` = '%s' WHERE `ivs_mp_opleiding`.`opleiding_id` = %d;", $input_array['update-input-opleidingsnaam'], $input_array['id-opleidingsnaam'] ) );
 
             $wpdb->update(
                 $this->getTableName(), 
@@ -223,7 +235,7 @@ class Opleidingen {
         foreach( $result_array as $idx => $array) {
 
             // Declare new object
-            $opleiding = new Opleidingen();
+            $opleiding = new Opleiding();
 
             // Set all the info
             $opleiding->setID( $array['opleiding_id'] );
@@ -239,7 +251,12 @@ class Opleidingen {
     }
 
     /**
+     * setID
+     * 
+     * Store ID of education name in current object
+     * 
      * @param type Int - ID of the education name
+     * if (is_int( intval( $opleiding_ID ) )) - get integer value of variable, and check if it is an integer
     */
     public function setID($opleiding_ID) {
     
@@ -250,7 +267,12 @@ class Opleidingen {
     }
 
     /**
+     * setNaam
+     * 
+     * Store education name in current object
+     * 
      * @param type String - Education name
+     * if( is_string( $naam_opleiding ) ) - check if supplied education name is string
     */
     public function setNaam($naam_opleiding) {
 
@@ -261,6 +283,10 @@ class Opleidingen {
     }
 
     /**
+     * getID
+     * 
+     * Get ID of education name of current object
+     * 
      * @return type Int - The ID of the education name
     */
     public function getID() {
@@ -268,6 +294,10 @@ class Opleidingen {
     }
 
     /**
+     * getNaam
+     * 
+     * Get education name of current object
+     * 
      * @return type String - The education name
     */
     public function getNaam() {
@@ -275,6 +305,9 @@ class Opleidingen {
     }
 
     /**
+     * getTableName
+     * 
+     * Get table name to prevent writing mistakes on several places
      * 
      * @return type String - Table name
     */
@@ -284,6 +317,8 @@ class Opleidingen {
     }
 
     /**
+     * getTableDataArray
+     * 
      * The function takes the input data array and changes the indexes
      * to the column names
      * In case of update or insert action
@@ -309,7 +344,6 @@ class Opleidingen {
 
                 // Remove the index -> is primary key and can therefore NOT be changed
                 if ( !empty( $table_data ) ) {
-                    echo 'zie je dit?';
 
                     unset( $table_data[ 'opleiding_id' ] );
 
@@ -325,6 +359,8 @@ class Opleidingen {
     }
 
     /**
+     * getTableColumnNames
+     * 
      * Get the colum names of the specified table
      * @global wpdb - The WordPress Database Interface
      * @return type $table

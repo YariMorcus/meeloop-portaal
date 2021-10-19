@@ -82,7 +82,7 @@ class Meeloopdag {
      * setId
      * 
      * Set the ID of the opleiding
-     * @param {int} - The id of the opleiding
+     * @param int - The id of the opleiding
     */
     public function setId( $id ) {
 
@@ -98,7 +98,7 @@ class Meeloopdag {
      * setEducationName
      * 
      * Set the name of the opleiding
-     * @param {int} - The id of the opleiding
+     * @param string - The name of the opleiding
     */
     public function setEducationName( $name ) {
 
