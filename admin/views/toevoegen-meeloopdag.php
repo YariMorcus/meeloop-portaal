@@ -24,11 +24,6 @@ $base_url = add_query_arg( $params, $base_url );
 // Get the POST data in filtered array
 $post_array = $meeloopdag->getPostValues();
 
-// echo '<pre>';
-// echo __FILE__.__LINE__.'<br />';
-//  var_dump($post_array);
-// echo '</pre>';
-
 if ( !empty( $post_array ) ) {
 
     // Check the add form:

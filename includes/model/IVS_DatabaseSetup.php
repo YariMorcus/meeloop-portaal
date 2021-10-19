@@ -148,7 +148,6 @@ class IVS_DatabaseSetup {
         
     }
 
-
 }
 
 ?>

@@ -90,8 +90,8 @@ class PageView {
     /**
     * createTemplateBlueprint
     * 
-    * @param {string} template_slug
-    * @param {string} template_name
+    * @param string template_slug
+    * @param string template_name
     *
     */
     private function createTemplateBlueprint( $template_slug, $template_name ) {

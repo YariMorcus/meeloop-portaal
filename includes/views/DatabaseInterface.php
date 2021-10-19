@@ -12,9 +12,9 @@ class DatabaseInterface {
     /**
      * createPageTemplate
      * 
-     * @param {string} the slug of the post
-     * @param {string} the name of the template. Name will be prefixed with {template-}
-     * @param {string} the title of the page
+     * @param string the slug of the post
+     * @param string the name of the template. Name will be prefixed with {template-}
+     * @param string the title of the page
      * 
      * URL for help: https://adaptiveweb.com.au/creating-pages-automatically-on-plugin-activation-in-wordpress/
     */
@@ -51,6 +51,7 @@ class DatabaseInterface {
          * removePageTemplate
          * 
          * Removes the automatically created pages when user deactivates the plugin
+         * @param string the post name
         */
         public function removePageTemplate($post_name) {
 

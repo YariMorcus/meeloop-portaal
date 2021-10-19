@@ -25,6 +25,10 @@ class IVSMeeloopPortaal_AdminController {
 
             // Load admin css
             add_action( 'admin_enqueue_scripts', array('IVSMeeloopPortaal_AdminController', 'loadAdminCSS' ) );
+
+            require_once(IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/Opdracht.php');
+
+            Opdracht::registerTaskPostType();
         }
 
     }

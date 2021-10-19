@@ -346,7 +346,6 @@ class IVSMeeloopPortaal {
         }
 
     }
-
 }
 
 // Instantiate the class
