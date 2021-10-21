@@ -267,12 +267,21 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 }
 
 .ui-dialog-titlebar {
-    background: var(--ivs-geel)!important;
+    color: var(--grey) !important; /* Overide jquery css */
+    background: var(--ivs-geel)!important; /* Overide jquery css */
 }
 
+.ui-dialog-buttonset > button:nth-child(1) {
+    color: var(--darkgrey);
+    border: 1px solid var(--grey);
+    background: #F0F2F3;
+}
+
+
 .ui-dialog-buttonset > button:nth-child(2) {
-    background: #cf352e;
+    border: 1px solid var(--grey);
     color: white;
+    background: #cf352e;
 }
 
 #dialog-confirm { display: none; }
