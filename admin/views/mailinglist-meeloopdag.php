@@ -91,6 +91,10 @@ if ( !empty( $get_array ) ) {
     <h1 class="meeloop-portaal-h1">Mailinglist meeloop studenten</h1>
     <h2 class="meeloop-portaal-h2">Voeg nieuwe meeloop student toe</h2>
     <form action="#" method="post" id="formulier-toevoegen-mailinglist">
+        <label for="input-meeloopdag-meeloop-student" id="label-meeloopdag-meeloop-student">Selecteer meeloopdag</label>
+        <select name="meeloopdag-meeloop-student" id="input-meeloopdag-meeloop-student" form="formulier-toevoegen-mailinglist" required>
+            <option value="2">23 oktober 2021</option>
+        </select>
         <label for="input-naam-meeloop-student" id="label-naam-meeloop-student">Vul hier de naam in van de meeloop student</label>
         <input type="text" id="input-naam-meeloop-student" name="naam-meeloop-student" required>
         <label for="input-email-meeloop-student" id="label-email-meeloop-student">Vul hier het e-mailadres in van de meeloop student</label>
@@ -144,6 +148,7 @@ if ( !empty( $get_array ) ) {
                     Selecteer<br>alles
                     <input type="checkbox" name="checkbox-selecteer-allen" id="checkbox-selecteer-allen">
                 </th>
+                <th id="mailinglist-tabel-data">Meeloopdag</th>
                 <th id="mailinglist-tabel-data">Naam</th>
                 <th id="mailinglist-tabel-data">E-mail</th>
                 <th id="mailinglist-tabel-data">Status</th>
@@ -166,6 +171,7 @@ if ( !empty( $get_array ) ) {
                 <td id="mailinglist-tabel-data">
                     <input type="checkbox" name="checkbox-selecteer-individu[]" class="checkbox-individu" value="<?php echo $meeloop_student->getID(); ?>">
                 </td>
+                <td id="mailinglist-tabel-data">23 oktober 2021</td>
                 <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getName(); ?></td>
                 <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getEmail(); ?></td>
                 <td id="mailinglist-tabel-data"><?php echo $email_status_label; ?></td>

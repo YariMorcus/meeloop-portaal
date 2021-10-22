@@ -102,7 +102,8 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-meeloopdag-datum,
 #label-naam-meeloop-student,
 #label-email-meeloop-student,
-#label-toevoegen-opleiding {
+#label-toevoegen-opleiding,
+#label-meeloopdag-meeloop-student {
     display: block;
     margin-bottom: 5px;
 }
@@ -111,6 +112,7 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-meeloopdag-datum,
 #label-naam-meeloop-student,
 #label-email-meeloop-student,
+#label-meeloopdag-meeloop-student,
 #mailinglist-tabel-data,
 .verwijder-button,
 .verwijderd-message {
@@ -121,7 +123,8 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #selecteer-datum,
 #input-naam-meeloop-student,
 #input-email-meeloop-student,
-#input-toevoegen-opleiding {
+#input-toevoegen-opleiding,
+#input-meeloopdag-meeloop-student {
     margin-bottom: 1rem;
     width: 100%;
     border: 1px solid var(--grey) !important;
