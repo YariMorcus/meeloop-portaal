@@ -39,42 +39,69 @@ class Meeloopdag {
     }
 
     /**
-     * getOpleidingen
+     * getNrOfRegisteredMeeloopdagen
      * 
-     * Retrieve all the opleidingen from the database
-     * @return $return_array - Array containing all the registered educations
+     * Get the number of registered meeloopdagen
+     * 
+     * @return int - integer of the registered meeloopdagen stored in database
     */
-    public function getOpleidingenList() {
+    public function getNrOfRegisteredMeeloopdagen() {
 
         global $wpdb;
 
-        $return_array = array();
+        // Setup count query
+        $count_query = "SELECT COUNT(*) AS nr FROM `ivs_mp_meeloopdag`";
 
-        $result_array = $wpdb->get_results( "SELECT * FROM ivs_mp_opleiding ORDER BY opleiding_id", ARRAY_A );
+        // Retrieve the integer of the amount of registered meeloopdagen
+        $result = $wpdb->get_results( $count_query, OBJECT );
 
-        
-        // echo '<pre>';
+        // Return the number of registered meeloop dagen
+        return $result[0]->nr;
 
-        // echo __FILE__.__LINE__.'<br />';
-        // var_dump($result_array);
-        // echo '</pre>';
+    }
 
-        // For all database results
-        foreach( $result_array as $idx => $array ) {
+    /**
+     * getMeeloopdagenList
+     * 
+     * Retrieve all the registered meeloopdagen from the database
+     * @return array - Array containing all the registered meeloopdagen
+    */
+    public function getMeeloopdagenList() {
+
+        global $wpdb;
+
+        try {
+
+            $return_array = array();
+
+            $result_array = $wpdb->get_results( "SELECT `meeloopdag_id` AS id, `meeloopdag_datum` AS datum FROM ivs_mp_meeloopdag", OBJECT );
+
+            // echo '<pre>'; 
+            // echo __FILE__ . '   ' . __LINE__;
+            // var_dump($result_array);
+            // echo '</pre>';
+
+            // For all database results
+            foreach ($result_array as $idx => $meeloopdag_object) {
+
+                // Declare new class variable
+                $meeloopdag = new Meeloopdag();
+
+                // Set all the info
+                $meeloopdag->setId( $meeloopdag_object->id );
+                $meeloopdag->setMeeloopdagDate( $meeloopdag_object->datum );
+
+                // Add new object to array
+                $return_array[] = $meeloopdag;
+
+            }
+
+            return $return_array;
+
             
-            // Create new object
-            $meeloopdag = new Meeloopdag();
-
-            // Set all info
-            $meeloopdag->setId( $array['opleiding_id'] );
-            $meeloopdag->setEducationName( $array['naam_opleiding'] );
-
-            // Add new object to return_array
-            $return_array[] = $meeloopdag;
+        } catch(Exception $exc) {
 
         }
-
-        return $return_array;
 
     }
 
@@ -95,17 +122,15 @@ class Meeloopdag {
     }
 
     /**
-     * setEducationName
+     * setMeeloopdagDate
      * 
-     * Set the name of the opleiding
-     * @param string - The name of the opleiding
+     * Set the date of the meeloopdag
+     * @param string - The date of the meeloopdag
     */
-    public function setEducationName( $name ) {
+    public function setMeeloopdagDate( $date ) {
 
-        if ( is_string( $name ) ) {
-
-            $this->education_name = trim( $name );
-
+        if( is_string( $date ) ) {
+            $this->date = trim( $date );
         }
 
     }
@@ -118,18 +143,18 @@ class Meeloopdag {
     */
     public function getId() {
 
-        return $this-id;
+        return $this->id;
     }
 
     /**
-     * getEducationName
+     * getMeeloopdagDate
      * 
      * Get the name of the opleiding
      * @return {string} - The name of the opleiding
     */
-    public function getEducationName() {
+    public function getMeeloopdagDate() {
 
-        return $this-education_name;
+        return $this->date;
     }
 
     /**

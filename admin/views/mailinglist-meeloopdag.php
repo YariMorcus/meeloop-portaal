@@ -1,9 +1,15 @@
 <?php 
-// Include the model
+// Include the Mailinglist model
 include IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/Mailinglist.php';
 
-// Declare class variable
+// Include the Meeloopdag model
+include IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/Meeloopdag.php';
+
+// Declare class variable for Mailinglist
 $mailinglist = new Mailinglist();
+
+// Declare class variable for Meeloopdag
+$meeloopdag = new Meeloopdag();
 
 // Set base url to current page and add specific vars
 $base_url = get_admin_url() . 'admin.php';
@@ -90,46 +96,98 @@ if ( !empty( $get_array ) ) {
 <div class="wrap">
     <h1 class="meeloop-portaal-h1">Mailinglist meeloop studenten</h1>
     <h2 class="meeloop-portaal-h2">Voeg nieuwe meeloop student toe</h2>
-    <form action="#" method="post" id="formulier-toevoegen-mailinglist">
-        <label for="input-meeloopdag-meeloop-student" id="label-meeloopdag-meeloop-student">Selecteer meeloopdag</label>
-        <select name="meeloopdag-meeloop-student" id="input-meeloopdag-meeloop-student" form="formulier-toevoegen-mailinglist" required>
-            <option value="2">23 oktober 2021</option>
-        </select>
-        <label for="input-naam-meeloop-student" id="label-naam-meeloop-student">Vul hier de naam in van de meeloop student</label>
-        <input type="text" id="input-naam-meeloop-student" name="naam-meeloop-student" required>
-        <label for="input-email-meeloop-student" id="label-email-meeloop-student">Vul hier het e-mailadres in van de meeloop student</label>
-        <input type="email" id="input-email-meeloop-student" name="email-meeloop-student" required>
-        <input type="submit" name="registreer-meeloop-student" id="registreer-meeloop-student" value="Voeg meeloop student toe aan mailinglist">
+    <!-- 
+        This program checks whether meeloopdagen have been registered,
+        and if not, shows a message to the user, that they should add one first
+
+        if statement - make call to function getNrOfRegisteredMeeloopdagen, and check if less than 1
+            show message that user should add meeloopdagen first
+
+        else
+            show entire form
+            show select element
+            var meeloopdagen_list = make call to function getMeeloopdagenList
+            foreach loop - loop over meeloopdagen_list
+            show option element, fill value attr. with id of meeloopdag, and as text the date
+            endforeach
+        endif;
+
+    -->
         <?php 
+        // Check if user has registered any meeloopdagen.
+        // If NOT, don't show form, but a message instead
+        if ( $meeloopdag->getNrOfRegisteredMeeloopdagen() < 1 ) {
 
-        if ( isset( $add ) AND $add ) {
-            echo "<span class=\"toegevoegd-message\">Meeloop student toegevoegd aan mailinglist</span>";
-        }
+            $params = array( 'page' => 'toevoegen-meeloopdag' );
+            $toevoegen_meeloopdag_url = add_query_arg( $params, $base_url );
 
-        if ( isset( $verwijderen ) AND $verwijderen ) {
-            echo "<span class=\"verwijderd-message\">Meeloopstudent(en) succesvol verwijderd!</span>";
-        }
+            ?>
+            <p class="paragraph-main">Omdat u nog <strong>geen</strong> meeloopdag heeft geregistreerd, kunt u geen meeloop studenten toevoegen aan deze mailing list.
+            Wanneer u een meeloopdag heeft geregistreerd, zal hier het formulier verschijnen waarmee u meeloop studenten kunt registreren.
+            U kunt een meeloopdag registeren op de <a href="<?php echo $toevoegen_meeloopdag_url; ?>">toevoegen meeloopdag</a> pagina.
+            </p>
+            <?php
 
-        if ( isset( $uitnodiging ) AND $uitnodiging ) {
-            echo "<span class=\"verzonden-message\">Uitnodiging(en) succesvol verzonden</span>";
-        }
+        // If meeloopdagen have been registered, show form
+        } else {
+            ?> 
+            <form action="#" method="post" id="formulier-toevoegen-mailinglist">
+                <label for="input-meeloopdag-meeloop-student" id="label-meeloopdag-meeloop-student">Selecteer meeloopdag</label>
+                <select name="meeloopdag-meeloop-student" id="input-meeloopdag-meeloop-student" form="formulier-toevoegen-mailinglist" required>
+                    <?php 
+                    
+                    // Get all registered meeloopdagen
+                    $meeloopdagen_list = $meeloopdag->getMeeloopdagenList();
+                    
+                    // Loop over all the registered meeloopdagen as an individual meeloopdag
+                    foreach( $meeloopdagen_list as $idx => $meeloopdag ) {
 
-        if ( isset( $uitnodiging ) AND empty( $uitnodiging ) ) {
-            $error_message = "
-            Error: Uitnodiging(en) zijn niet verzonden.<br>
-            Controleer de volgende punten:
-            <ol>
-                <li>Of de server juist is ingesteld op het versturen van e-mails via PHP.</li>
-                <li>Of u de juiste authenticatie gebruikt.</li>
-                <li>Of u de WP Mail SMTP by WPForms plugin gebruikt.</li>
-            </ol>
-            ";
+                        ?><option value="<?php echo $meeloopdag->id; ?>"><?php echo $meeloopdag->date; ?></option><?php
 
-            echo "<span class=\"niet-verzonden-message\">" . $error_message .  "</span>";
+                    }
+                    ?>
+                </select>
+                <label for="input-naam-meeloop-student" id="label-naam-meeloop-student">Vul hier de naam in van de meeloop student</label>
+                <input type="text" id="input-naam-meeloop-student" name="naam-meeloop-student" required>
+                <label for="input-email-meeloop-student" id="label-email-meeloop-student">Vul hier het e-mailadres in van de meeloop student</label>
+                <input type="email" id="input-email-meeloop-student" name="email-meeloop-student" required>
+                <input type="submit" name="registreer-meeloop-student" id="registreer-meeloop-student" value="Voeg meeloop student toe aan mailinglist">
+            <?php
+            // If user has added a new meeloop student, show success message
+            if ( isset( $add ) AND $add ) {
+                echo "<span class=\"toegevoegd-message\">Meeloop student toegevoegd aan mailinglist</span>";
+            }
+
+            // If user has removed a meeloop student, show removed message
+            if ( isset( $verwijderen ) AND $verwijderen ) {
+                echo "<span class=\"verwijderd-message\">Meeloopstudent(en) succesvol verwijderd!</span>";
+            }
+
+            // If user has send an invitation e-mail to meeloop studenten, show message that
+            // e-mails have been succesfully send
+            if ( isset( $uitnodiging ) AND $uitnodiging ) {
+                echo "<span class=\"verzonden-message\">Uitnodiging(en) succesvol verzonden</span>";
+            }
+
+            // If message couldn't be send somehow, show error message with tips on how to fix it
+            if ( isset( $uitnodiging ) AND empty( $uitnodiging ) ) {
+                $error_message = "
+                Error: Uitnodiging(en) zijn niet verzonden.<br>
+                Controleer de volgende punten:
+                <ol>
+                    <li>Of de server juist is ingesteld op het versturen van e-mails via PHP.</li>
+                    <li>Of u de juiste authenticatie gebruikt.</li>
+                    <li>Of u de WP Mail SMTP by WPForms plugin gebruikt.</li>
+                </ol>
+                ";
+
+                echo "<span class=\"niet-verzonden-message\">" . $error_message .  "</span>";
+            }
+            ?> 
+            </form> <!-- #formulier-toevoegen-mailinglist -->
+            <?php
         }
         ?>
-    </form> <!-- #formulier-toevoegen-mailinglist -->
-
     <h2 class="meeloop-portaal-h2">Mailinglist</h2>
     <form action="<?php echo $base_url; ?>" method="post" id="acties-form">
         <div class="acties-formulier">
@@ -155,7 +213,11 @@ if ( !empty( $get_array ) ) {
                 <th id="mailinglist-tabel-data">Verwijderen</th>
             </tr> <!-- #mailinglist-tabel-header-->
             <?php 
+
+            // Get all registered meeloop studenten
             $mailinglist_records = $mailinglist->getMeeloopstudentenList();
+
+            // Loop over registered meeloop studenten list as an individual
             foreach( $mailinglist_records as $meeloop_student ) {
 
                 // Create delete link
@@ -172,9 +234,9 @@ if ( !empty( $get_array ) ) {
                     <input type="checkbox" name="checkbox-selecteer-individu[]" class="checkbox-individu" value="<?php echo $meeloop_student->getID(); ?>">
                 </td>
                 <td id="mailinglist-tabel-data">23 oktober 2021</td>
-                <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getName(); ?></td>
-                <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getEmail(); ?></td>
-                <td id="mailinglist-tabel-data"><?php echo $email_status_label; ?></td>
+                <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getName(); // print name of meeloop student ?></td>
+                <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getEmail(); // print email of meeloop student?></td>
+                <td id="mailinglist-tabel-data"><?php echo $email_status_label; // print email status label ?></td>
                 <td id="mailinglist-tabel-data"><a href="<?php echo $del_link; ?>" class="verwijder-button">X</a></td>
             </tr> <!-- #mailinglist-tabel-rij -->
             <?php 
