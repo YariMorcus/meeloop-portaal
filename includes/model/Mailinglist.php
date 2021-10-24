@@ -24,6 +24,9 @@ class Mailinglist {
             // registreer-meeloop-student (submit action)
             'registreer-meeloop-student' => array( 'filter', FILTER_SANITIZE_STRING ),
 
+            // meeloopdag-meeloop-student field
+            'meeloopdag-meeloop-student' => array( 'filter', FILTER_SANITIZE_NUMBER_INT ),
+
             // naam-meeloop-student field
             'naam-meeloop-student' => array( 'filter', FILTER_SANITIZE_STRING ),
 
@@ -33,7 +36,6 @@ class Mailinglist {
             'bevestig-actie' => array( 'filter', FILTER_SANITIZE_STRING ),
 
             'actie' => array( 'filter', FILTER_SANITIZE_STRING )
-            
             
         );
 
@@ -311,6 +313,7 @@ class Mailinglist {
 
             // Set all info
             $meeloop_student->setID( $array['meeloop_student_id'] );
+            $meeloop_student->setMeeloopdagID( $array['fk_meeloopdag_id'] );
             $meeloop_student->setName( $array['meeloop_student_naam'] );
             $meeloop_student->setEmail( $array['meeloop_student_email'] );
             $meeloop_student->setEmailStatusID( $array['fk_mail_status_id'] );
@@ -328,7 +331,7 @@ class Mailinglist {
      * setID
      * 
      * Set the ID of the meeloop student
-     * @param {int} - The ID of the meeloop student
+     * @param int - The ID of the meeloop student
     */
     public function setID( $meeloop_student_ID ) {
 
@@ -339,6 +342,23 @@ class Mailinglist {
         }
 
     }
+
+    /**
+     * setMeeloopdagID
+     * 
+     * Set the ID of the meeloopdag for the meeloop student
+     * @param int - The ID of the meeloopdag
+    */
+    public function setMeeloopdagID( $id ) {
+
+        if( is_int( intval( $id ) ) ) {
+
+            $this->meeloopdag_id = $id;
+
+        }
+
+    }
+
     /**
      * setName
      * 
@@ -399,6 +419,18 @@ class Mailinglist {
     }
 
     /**
+     * getMeeloopdagID
+     * 
+     * Get the ID of the meeloopdag (to which the meeloop student has been registered)
+    */
+    public function getMeeloopdagID() {
+
+        return $this->meeloopdag_id;
+
+    }
+
+
+    /**
      * getName
      * 
      * Get the name of the meeloop student
@@ -429,12 +461,50 @@ class Mailinglist {
     }
 
     /**
+     * getMeeloopdagDate
+     * 
+     * Get the meeloopdag date from the database
+     * (conversion from ID to date)
+     *
+     * @param int - ID of the meeloopdag
+     * @return string - Meeloopdag date
+    */
+    public function getMeeloopdagDate( $meeloopdag_id ) {
+
+        try {
+
+            global $wpdb;
+
+            // Setup the query
+            $query = "SELECT meeloopdag_datum FROM `ivs_mp_meeloopdag` WHERE meeloopdag_id = %d";
+
+            // Prepare and execute the query, and store it in $meeloopdag_date
+            // $meeloopdag_date is an stdClass object
+            $meeloopdag_date = $wpdb->get_row( $wpdb->prepare( $query, $meeloopdag_id ), OBJECT );
+
+            // Return the meeloopdag date
+            return $meeloopdag_date->meeloopdag_datum;
+
+        } catch(Exception $exc) {
+
+            echo '<pre>'; 
+            $this->last_error = $exc->getMessage();
+            echo $exc->getMessage();
+            echo $exc->getTraceAsString();
+            echo '</pre>';
+
+        }
+
+    }
+
+
+    /**
      * getEmailStatusLabel
      * 
      * Get the email status label from the database 
      * (conversion from ID to label)
-     * @param {int} - The status ID of the email
-     * @return {string} - The email status label
+     * @param int - The status ID of the email
+     * @return string - The email status label
     */
     public function getEmailStatusLabel( $email_status_id ) {
 
@@ -479,13 +549,13 @@ class Mailinglist {
 
         try {
 
-            if ( !isset( $input_array['naam-meeloop-student'] ) OR !isset( $input_array['email-meeloop-student']) ) {
+            if ( !isset( $input_array['meeloopdag-meeloop-student'] ) OR !isset( $input_array['naam-meeloop-student'] ) OR !isset( $input_array['email-meeloop-student']) ) {
                 
                 throw new Exception( __( 'Missing mandatory fields' ) );
 
             }
 
-            if ( ( strlen( $input_array['naam-meeloop-student'] ) < 1 ) OR ( strlen( $input_array['email-meeloop-student'] ) < 1 ) ) {
+            if ( ( strlen( $input_array['meeloopdag-meeloop-student'] ) < 1 ) OR ( strlen( $input_array['naam-meeloop-student'] ) < 1 ) OR ( strlen( $input_array['email-meeloop-student'] ) < 1 ) ) {
 
                 throw new Exception( __( "Empty mandatory fields" ) );
 
@@ -494,7 +564,7 @@ class Mailinglist {
             global $wpdb;
 
             // Insert query
-            $wpdb->query( $wpdb->prepare( "INSERT INTO ivs_mp_mailinglist (meeloop_student_naam, meeloop_student_email) VALUES (%s, %s);", $input_array['naam-meeloop-student'], $input_array['email-meeloop-student'] ) );
+            $wpdb->query( $wpdb->prepare( "INSERT INTO ivs_mp_mailinglist (fk_meeloopdag_id, meeloop_student_naam, meeloop_student_email) VALUES (%s, %s, %s);", $input_array['meeloopdag-meeloop-student'], $input_array['naam-meeloop-student'], $input_array['email-meeloop-student'] ) );
 
 
             // Error? It's in there

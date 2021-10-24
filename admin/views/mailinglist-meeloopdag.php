@@ -96,23 +96,6 @@ if ( !empty( $get_array ) ) {
 <div class="wrap">
     <h1 class="meeloop-portaal-h1">Mailinglist meeloop studenten</h1>
     <h2 class="meeloop-portaal-h2">Voeg nieuwe meeloop student toe</h2>
-    <!-- 
-        This program checks whether meeloopdagen have been registered,
-        and if not, shows a message to the user, that they should add one first
-
-        if statement - make call to function getNrOfRegisteredMeeloopdagen, and check if less than 1
-            show message that user should add meeloopdagen first
-
-        else
-            show entire form
-            show select element
-            var meeloopdagen_list = make call to function getMeeloopdagenList
-            foreach loop - loop over meeloopdagen_list
-            show option element, fill value attr. with id of meeloopdag, and as text the date
-            endforeach
-        endif;
-
-    -->
         <?php 
         // Check if user has registered any meeloopdagen.
         // If NOT, don't show form, but a message instead
@@ -140,9 +123,14 @@ if ( !empty( $get_array ) ) {
                     $meeloopdagen_list = $meeloopdag->getMeeloopdagenList();
                     
                     // Loop over all the registered meeloopdagen as an individual meeloopdag
+                    // and fill in the <option> element with the data
                     foreach( $meeloopdagen_list as $idx => $meeloopdag ) {
 
-                        ?><option value="<?php echo $meeloopdag->id; ?>"><?php echo $meeloopdag->date; ?></option><?php
+                        // Convert the numerical date to a more friendly date
+                        // Example: 2024-01-03 ==> 3 january 2024 😊
+                        $date = strtolower( date( 'j F Y', strtotime( $meeloopdag->date ) ) );
+
+                        ?><option value="<?php echo $meeloopdag->id; ?>"><?php echo $date; ?></option><?php
 
                     }
                     ?>
@@ -226,6 +214,14 @@ if ( !empty( $get_array ) ) {
                 // Add params to base url delete link
                 $del_link = add_query_arg( $params, $base_url );
 
+                // Get the meeloopdag date for the current meeloop student
+                $meeloopdag_date = $meeloop_student->getMeeloopdagDate( $meeloop_student->getMeeloopdagID() );
+
+                // Convert the numerical date to a more friendly date
+                // Example: 2024-01-03 ==> 3 january 2024 😊
+                $meeloopdag_date = strtolower( date('j F Y', strtotime( $meeloopdag_date) ) );
+
+                // Get the e-mail status label for the current meeloop student
                 $email_status_label = $meeloop_student->getEmailStatusLabel( $meeloop_student->getEmailStatusID() );
 
             ?>
@@ -233,10 +229,10 @@ if ( !empty( $get_array ) ) {
                 <td id="mailinglist-tabel-data">
                     <input type="checkbox" name="checkbox-selecteer-individu[]" class="checkbox-individu" value="<?php echo $meeloop_student->getID(); ?>">
                 </td>
-                <td id="mailinglist-tabel-data">23 oktober 2021</td>
-                <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getName(); // print name of meeloop student ?></td>
-                <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getEmail(); // print email of meeloop student?></td>
-                <td id="mailinglist-tabel-data"><?php echo $email_status_label; // print email status label ?></td>
+                <td id="mailinglist-tabel-data"><?php echo $meeloopdag_date; ?></td>
+                <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getName(); ?></td>
+                <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getEmail(); ?></td>
+                <td id="mailinglist-tabel-data"><?php echo $email_status_label; ?></td>
                 <td id="mailinglist-tabel-data"><a href="<?php echo $del_link; ?>" class="verwijder-button">X</a></td>
             </tr> <!-- #mailinglist-tabel-rij -->
             <?php 
