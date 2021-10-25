@@ -123,12 +123,14 @@ if ( !empty( $get_array ) ) {
                     $meeloopdagen_list = $meeloopdag->getMeeloopdagenList();
                     
                     // Loop over all the registered meeloopdagen as an individual meeloopdag
+                    setlocale( LC_TIME, 'nld_nld' );
                     // and fill in the <option> element with the data
                     foreach( $meeloopdagen_list as $idx => $meeloopdag ) {
 
-                        // Convert the numerical date to a more friendly date
+
+                        // Convert the numerical date to a more friendly date, and convert it to Dutch
                         // Example: 2024-01-03 ==> 3 january 2024 😊
-                        $date = strtolower( date( 'j F Y', strtotime( $meeloopdag->date ) ) );
+                        $date = strftime( '%e %B %Y', strtotime($meeloopdag->date) );
 
                         ?><option value="<?php echo $meeloopdag->id; ?>"><?php echo $date; ?></option><?php
 
@@ -217,9 +219,9 @@ if ( !empty( $get_array ) ) {
                 // Get the meeloopdag date for the current meeloop student
                 $meeloopdag_date = $meeloop_student->getMeeloopdagDate( $meeloop_student->getMeeloopdagID() );
 
-                // Convert the numerical date to a more friendly date
+                // Convert the numerical date to a more friendly date, and convert it to Dutch
                 // Example: 2024-01-03 ==> 3 january 2024 😊
-                $meeloopdag_date = strtolower( date('j F Y', strtotime( $meeloopdag_date) ) );
+                $meeloopdag_date = strftime( '%e %B %Y', strtotime( $meeloopdag_date ) );
 
                 // Get the e-mail status label for the current meeloop student
                 $email_status_label = $meeloop_student->getEmailStatusLabel( $meeloop_student->getEmailStatusID() );
