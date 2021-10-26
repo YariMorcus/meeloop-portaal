@@ -1,9 +1,15 @@
 <?php 
-// Include the model
+// Include the model for Meeloopdag
 include IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/Meeloopdag.php';
 
-// Declare class variable
+// Include the model for Opleiding
+include IVS_MEELOOP_PORTAAL_PLUGIN_INCLUDES_MODEL_DIR . '/Opleiding.php';
+
+// Declare class variable for Meeloopdag
 $meeloopdag = new Meeloopdag();
+
+// Declare class variable for Opleiding
+$opleiding = new Opleiding();
 
 // Set base url to current file and add page specific vars
 $base_url = get_admin_url() . 'admin.php';
@@ -58,10 +64,14 @@ if ( !empty( $post_array ) ) {
         <select name="opleiding" id="selecteer-opleiding">
 
         <?php 
-        $education_list = $meeloopdag->getOpleidingenList();
+        // Get all registered educations
+        $education_list = $opleiding->getEducationList();
+
+        // Loop over all the registered educations as an individual item
+        // and print the id and name of the education
         foreach( $education_list as $idx => $array ) {
             ?>
-            <option value="<?php echo $array->id    ; ?>"><?php echo $array->education_name; ?></option>
+            <option value="<?php echo $array->getID(); ?>"><?php echo $array->getNaam(); ?></option>
             <?php
         }
         ?>d
