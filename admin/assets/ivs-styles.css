@@ -18,12 +18,12 @@
 }
 
 @font-face {
-    font-family: 'Futura PT';
-    src: url('fonts/FuturaPT-Bold.eot');
-    src: url('fonts/FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
-        url('fonts/FuturaPT-Bold.woff2') format('woff2'),
-        url('fonts/FuturaPT-Bold.woff') format('woff'),
-        url('fonts/FuturaPT-Bold.ttf') format('truetype');
+    font-family: 'Futura PT Bold';
+    src: url('../../includes/views/assets/fonts/FuturaPT-Bold.eot');
+    src: url('../../includes/views/assets/fonts/FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../../includes/views/assets/fonts/FuturaPT-Bold.woff2') format('woff2'),
+        url('../../includes/views/assets/fonts/FuturaPT-Bold.woff') format('woff'),
+        url('../../includes/views/assets/fonts/FuturaPT-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -45,7 +45,7 @@
     --ivs-geel: rgb(253, 208, 42);
     --lightgrey: #F0F2F3;
     --grey: #707070;
-    --darkgrey: rgb(74,74,74);
+    --darkgrey: rgb(74, 74, 74);
     --blue: #6FCCDD;
 }
 
@@ -68,6 +68,24 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     color: #fff!important;
 }
 
+.grid-3-5 {
+    border: 1px solid red;
+}
+
+@media (min-width: 1028px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: 40% 1fr;
+        grid-column-gap: 10px;
+    }
+
+    .grid-2-5,
+    .grid-3-5 {
+        border: 1px solid green;
+    }
+
+}
+
 .meeloop-portaal-h1 {
     margin-bottom: 1rem !important;
     font: normal normal 900 30px/38px 'Futura PT';
@@ -82,6 +100,11 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 .meeloop-portaal-h2 {
     font: normal normal bold 20px "Futura PT";
     color: var(--grey);
+}
+
+#formulier-toevoegen-rooster {
+    padding: 2rem 1rem;
+    background: #e3e6e8;
 }
 
 #formulier-toevoegen-meeloopdag {
@@ -103,8 +126,13 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-naam-meeloop-student,
 #label-email-meeloop-student,
 #label-toevoegen-opleiding,
-#label-meeloopdag-meeloop-student {
+#label-meeloopdag-meeloop-student,
+#label-selecteer-meeloopdag,
+#label-input-taaknaam,
+#label-input-startijd,
+#label-input-eindtijd {
     display: block;
+    color: var(--darkgrey);
     margin-bottom: 5px;
 }
 
@@ -112,43 +140,62 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-meeloopdag-datum,
 #label-naam-meeloop-student,
 #label-email-meeloop-student,
+#label-toevoegen-opleiding,
 #label-meeloopdag-meeloop-student,
+#label-selecteer-meeloopdag,
+#label-input-taaknaam,
+#label-input-startijd,
+#label-input-eindtijd,
 #mailinglist-tabel-data,
 .verwijder-button,
 .verwijderd-message {
-        font: normal normal normal 16px 'Futura PT Book';
+        font: normal normal normal 15px 'Futura PT Book';
 }
 
 #selecteer-opleiding,
 #selecteer-datum,
+#selecteer-meeloopdag,
 #input-naam-meeloop-student,
 #input-email-meeloop-student,
 #input-toevoegen-opleiding,
-#input-meeloopdag-meeloop-student {
+#input-meeloopdag-meeloop-student,
+#input-taaknaam,
+#input-starttijd,
+#input-eindtijd {
     margin-bottom: 1rem;
     width: 100%;
     border: 1px solid var(--grey) !important;
 }
 
+.ivs-button,
 #selecteer-opleiding,
 #selecteer-datum, 
-#registreer-meeloopdag,
 #registreer-meeloop-student,
 #toevoegen-opleiding {
     display: block;
 }
 
-#registreer-meeloopdag,
-#registreer-meeloop-student,
-#bevestig-actie,
-#toevoegen-meeloopdag,
-#bewerken-opleidingsnaam {
+.ivs-button-inline {
+    display: inline;
+}
+
+.ivs-button,
+#registreer-meeloop-student {
     margin-left: auto;
+    width: 80%;
+    max-width: 250px;
     padding: 1rem 2.5rem !important;
     font: normal normal 900 14px/20px 'Futura PT';
     background: var(--blue) !important;
     border: 1px solid var(--grey) !important;
     cursor: pointer;
+}
+
+.selecteer-actie-1, 
+.selecteer-actie-2,
+.button-full-width {
+    width: 100%;
+    max-width: initial;
 }
 
 #anchor-edit-opleiding {
@@ -157,11 +204,6 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 
 #toevoegen-opleiding {
     width: 100%;
-}
-
-#toevoegen-meeloopdag {
-    margin-bottom: 1rem;
-    display: block;
 }
 
 #registreer-meeloop-student {
@@ -294,11 +336,12 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     color: var(--grey);
 }
 .main-heading-admin {
+    font-size: 30px !important;
     font-family: 'Futura PT Heavy';
 }
 
 .subheading-2-admin {
-    font-family: 'Futura PT Book';
+    font-family: 'Futura PT Bold';
     font-size: 20px;
 }
 
@@ -349,6 +392,15 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 @media only screen and (min-width: 468px) {   
     .admin-meeloop-table {
         width: 60%;
+    }
+}
+
+@media only screen and (min-width: 528px) {
+    .selecteer-actie-1, 
+    .selecteer-actie-2,
+    .button-full-width {
+        width: initial;
+        max-width: initial;
     }
 }
 
