@@ -9,6 +9,14 @@
 */
 class Mailinglist {
 
+    // Declare and initialize class properties
+    public $meeloop_student_id = 0;
+    public $meeloopdag_id = 0;
+    public $email_status_id = 0;
+    public $naam_meeloop_student = '';
+    public $email_meeloop_student = '';
+    public $email_status = '';
+
     /**
      * getPostValues
      * 
@@ -255,12 +263,6 @@ class Mailinglist {
 
             global $wpdb;
 
-            // Prepare delete query
-            // $query = $wpdb->prepare( "DELETE FROM ivs_mp_mailinglist WHERE meeloop_student_ID = %d", $input_array['id'] );
-
-            // // Execute delete query
-            // $wpdb->query( $query );
-
             $wpdb->delete( 
                 'ivs_mp_mailinglist', 
                 array( 'meeloop_student_id' => $user_id ),
@@ -369,7 +371,7 @@ class Mailinglist {
 
         if ( is_string( $meeloop_student_naam ) ) {
 
-            $this->meeloop_student_naam = trim( $meeloop_student_naam );
+            $this->naam_meeloop_student = trim( $meeloop_student_naam );
 
         }
 
@@ -385,7 +387,7 @@ class Mailinglist {
 
         if ( is_string( $meeloop_student_email ) ) {
 
-            $this->meeloop_student_email = trim( $meeloop_student_email );
+            $this->email_meeloop_student = trim( $meeloop_student_email );
 
         }
 
@@ -437,7 +439,7 @@ class Mailinglist {
      * @return {string} - The name of the meeloop student
     */
     public function getName() {
-        return $this->meeloop_student_naam;
+        return $this->naam_meeloop_student;
     }
 
     /**
@@ -447,7 +449,7 @@ class Mailinglist {
      * @return {string} - The email of the meeloop student
     */
     public function getEmail() {
-        return $this->meeloop_student_email;
+        return $this->email_meeloop_student;
     }
 
     /**
@@ -486,17 +488,13 @@ class Mailinglist {
             return $meeloopdag_date->meeloopdag_datum;
 
         } catch(Exception $exc) {
-
-            echo '<pre>'; 
+            
             $this->last_error = $exc->getMessage();
             echo $exc->getMessage();
-            echo $exc->getTraceAsString();
-            echo '</pre>';
 
         }
 
     }
-
 
     /**
      * getEmailStatusLabel
@@ -523,12 +521,10 @@ class Mailinglist {
             return $result['status'];
 
         } catch(Exception $exc) {
-            // @todo: Add error handling
-            echo '<pre>';
+
             $this->last_error = $exc->getMessage();
             echo $exc->getMessage();
-            echo $exc->getTraceAsString();
-            echo '</pre>';
+
         }
 
         return $this->email_status_id;
@@ -578,8 +574,7 @@ class Mailinglist {
 
         } catch(Exception $exc) {
 
-            // @todo: Add error handling
-            echo '<pre>' . $exc->getTraceAsString() . '</pre>';
+            echo $exc->getMessage();
         }
 
         return TRUE;
@@ -680,17 +675,12 @@ class Mailinglist {
 
 
         } catch(Exception $exc) {
-            // @todo: Add error handling
-            echo '<pre>';
+
             $this->last_error = $wpdb->last_error;
             echo $exc->getMessage();
-            echo $exc->getTraceAsString();
-            echo '</pre>';
         }
 
     }
 
 }
-
-
 ?>
