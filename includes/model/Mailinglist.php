@@ -397,7 +397,7 @@ class Mailinglist {
      * setEmailStatus
      * 
      * Set the email status of the meeloop student
-     * @param {int} - The email status id of the meeloop student
+     * @param int - The email status id of the meeloop student
     */
     public function setEmailStatusID( $email_status_id ) {
 
@@ -436,7 +436,7 @@ class Mailinglist {
      * getName
      * 
      * Get the name of the meeloop student
-     * @return {string} - The name of the meeloop student
+     * @return string - The name of the meeloop student
     */
     public function getName() {
         return $this->naam_meeloop_student;
@@ -446,7 +446,7 @@ class Mailinglist {
      * getEmail
      * 
      * Get the email of the meeloop student
-     * @return {string} - The email of the meeloop student
+     * @return string - The email of the meeloop student
     */
     public function getEmail() {
         return $this->email_meeloop_student;
@@ -456,7 +456,7 @@ class Mailinglist {
      * getEmailStatusID
      * 
      * Get the email status of the meeloop student
-     * @return {int} - The status ID of the email
+     * @return int - The status ID of the email
     */
     public function getEmailStatusID() {
         return $this->email_status_id;
