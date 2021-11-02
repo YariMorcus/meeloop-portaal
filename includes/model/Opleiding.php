@@ -6,6 +6,10 @@
 */
 class Opleiding {
 
+    // Declare and initialize class properties
+    public $opleiding_ID = 0;
+    public $naam_opleiding = '';
+
     /**
      * getPostValues
      * Filter input and retrieve POST input params
@@ -71,7 +75,7 @@ class Opleiding {
      * Check if user wants to update the education name.
      * If yes, and education name id is known, return action to show form update field to user
      * 
-     * @param type Array - All get vars and values
+     * @param array - All get vars and values
      * if (( !is_null( $get_array['id'] )), education name id supplied? Store action 'update' in $action
     */
     public function handleGetAction($get_array) {
@@ -181,9 +185,9 @@ class Opleiding {
             );
 
         } catch(Exception $exc) {
-            // @todo: add error handling
-            echo '<pre>' . $exc->getTraceAsString() . '</pre>';
+
             $this->last_error = $exc->getMessage();
+            echo $exc->getMessage();
 
             return FALSE;
         }
@@ -214,7 +218,7 @@ class Opleiding {
     /**
      * 
      * @global type $wpdb - The WordPress Database Interface
-     * @return type $return_array - Array of objects, containing the data
+     * @return array - Array of objects, containing the data
     */
     public function getEducationList() {
 
@@ -225,11 +229,6 @@ class Opleiding {
 
         // Retrieve the results from the database
         $result_array = $wpdb->get_results( "SELECT * FROM ivs_mp_opleiding ORDER BY opleiding_id", ARRAY_A );
-
-        // echo '<pre>'; 
-        // echo __FILE__ . __LINE__ . '<br><br>';
-        // var_dump($result_array);
-        // echo '</pre>';
 
         // For all database results:
         foreach( $result_array as $idx => $array) {
@@ -255,7 +254,7 @@ class Opleiding {
      * 
      * Store ID of education name in current object
      * 
-     * @param type Int - ID of the education name
+     * @param int - ID of the education name
      * if (is_int( intval( $opleiding_ID ) )) - get integer value of variable, and check if it is an integer
     */
     public function setID($opleiding_ID) {
@@ -271,7 +270,7 @@ class Opleiding {
      * 
      * Store education name in current object
      * 
-     * @param type String - Education name
+     * @param string - Education name
      * if( is_string( $naam_opleiding ) ) - check if supplied education name is string
     */
     public function setNaam($naam_opleiding) {
@@ -287,7 +286,7 @@ class Opleiding {
      * 
      * Get ID of education name of current object
      * 
-     * @return type Int - The ID of the education name
+     * @return int - The ID of the education name
     */
     public function getID() {
         return $this->opleiding_ID;
@@ -298,7 +297,7 @@ class Opleiding {
      * 
      * Get education name of current object
      * 
-     * @return type String - The education name
+     * @return string - The education name
     */
     public function getNaam() {
         return $this->naam_opleiding;
@@ -309,7 +308,7 @@ class Opleiding {
      * 
      * Get table name to prevent writing mistakes on several places
      * 
-     * @return type String - Table name
+     * @return string - Table name
     */
     private function getTableName() {
         
@@ -326,7 +325,7 @@ class Opleiding {
      * @param type $input_data_array - data array (id-opleidingsnaam, update-input-opleidingsnaam)
      * @param type $action = update | insert
      * 
-     * @return type array with column index and values OR FALSE
+     * @return array with column index and values OR FALSE
     */
     private function getTableDataArray($input_data_array, $action = '') {
 
@@ -383,9 +382,8 @@ class Opleiding {
 
         } catch(Exception $exc) {
 
-            // @Todo: add error handling
-            echo '<pre>' . $exc->getTraceAsString() . '</pre>';
             $this->last_error = $exc->getMessage();
+            echo $exc->getMessage();
             return FALSE;
 
         }

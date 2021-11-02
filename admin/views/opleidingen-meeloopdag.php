@@ -18,13 +18,6 @@ $post_array = $opleidingen->getPostValues();
 // Get the GET data in filtered array
 $get_array = $opleidingen->getGetValues();
 
-//*
-// echo '<pre>';
-// echo __FILE__ . __LINE__;
-// var_dump($post_array);
-// echo '</pre>';
-//*/
-
 // Collect the errors
 $errors = FALSE;
 
