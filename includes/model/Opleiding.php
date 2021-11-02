@@ -181,9 +181,9 @@ class Opleiding {
             );
 
         } catch(Exception $exc) {
-            // @todo: add error handling
-            echo '<pre>' . $exc->getTraceAsString() . '</pre>';
+
             $this->last_error = $exc->getMessage();
+            echo $exc->getMessage();
 
             return FALSE;
         }
