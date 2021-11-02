@@ -6,6 +6,10 @@
 */
 class Opleiding {
 
+    // Declare and initialize class properties
+    public $opleiding_ID = 0;
+    public $naam_opleiding = '';
+
     /**
      * getPostValues
      * Filter input and retrieve POST input params
