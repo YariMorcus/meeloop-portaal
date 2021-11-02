@@ -18,12 +18,12 @@
 }
 
 @font-face {
-    font-family: 'Futura PT Bold';
-    src: url('../../includes/views/assets/fonts/FuturaPT-Bold.eot');
-    src: url('../../includes/views/assets/fonts/FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../../includes/views/assets/fonts/FuturaPT-Bold.woff2') format('woff2'),
-        url('../../includes/views/assets/fonts/FuturaPT-Bold.woff') format('woff'),
-        url('../../includes/views/assets/fonts/FuturaPT-Bold.ttf') format('truetype');
+    font-family: 'Futura PT';
+    src: url('fonts/FuturaPT-Bold.eot');
+    src: url('fonts/FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/FuturaPT-Bold.woff2') format('woff2'),
+        url('fonts/FuturaPT-Bold.woff') format('woff'),
+        url('fonts/FuturaPT-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -42,10 +42,10 @@
 }
 
 :root {
-    --ivs-geel: #fdd02a;
+    --ivs-geel: rgb(253, 208, 42);
     --lightgrey: #F0F2F3;
     --grey: #707070;
-    --darkgrey: #4a4a4a;
+    --darkgrey: rgb(74,74,74);
     --blue: #6FCCDD;
 }
 
@@ -68,14 +68,6 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     color: #fff!important;
 }
 
-@media (min-width: 1028px) {
-    .grid-container {
-        display: grid;
-        grid-template-columns: 40% 1fr;
-        grid-column-gap: 10px;
-    }
-}
-
 .meeloop-portaal-h1 {
     margin-bottom: 1rem !important;
     font: normal normal 900 30px/38px 'Futura PT';
@@ -92,6 +84,7 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     color: var(--grey);
 }
 
+<<<<<<< HEAD
 #formulier-toevoegen-rooster {
     padding: 2rem;
     position: relative;
@@ -100,6 +93,8 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     background: #e3e6e8;
 }
 
+=======
+>>>>>>> ae2fd9228aefdfe99ac8ef8de84cf6d59a68f46e
 #formulier-toevoegen-meeloopdag {
     max-width: 260px;
 }
@@ -119,13 +114,8 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-naam-meeloop-student,
 #label-email-meeloop-student,
 #label-toevoegen-opleiding,
-#label-meeloopdag-meeloop-student,
-#label-selecteer-meeloopdag,
-#label-input-taaknaam,
-#label-input-starttijd,
-#label-input-eindtijd {
+#label-meeloopdag-meeloop-student {
     display: block;
-    color: var(--darkgrey);
     margin-bottom: 5px;
 }
 
@@ -133,35 +123,25 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-meeloopdag-datum,
 #label-naam-meeloop-student,
 #label-email-meeloop-student,
-#label-toevoegen-opleiding,
 #label-meeloopdag-meeloop-student,
-#label-selecteer-meeloopdag,
-#label-input-taaknaam,
-#label-input-startijd,
-#label-input-eindtijd,
 #mailinglist-tabel-data,
 .verwijder-button,
 .verwijderd-message {
-        font: normal normal normal 15px 'Futura PT Book';
+        font: normal normal normal 16px 'Futura PT Book';
 }
 
 #selecteer-opleiding,
 #selecteer-datum,
-#selecteer-meeloopdag,
 #input-naam-meeloop-student,
 #input-email-meeloop-student,
 #input-toevoegen-opleiding,
-#input-meeloopdag-meeloop-student,
-#input-taaknaam,
-#input-starttijd,
-#input-eindtijd {
+#input-meeloopdag-meeloop-student {
     margin-bottom: 1rem;
-    height: 42px;
     width: 100%;
     border: 1px solid var(--grey) !important;
-    border-radius: 0;
 }
 
+<<<<<<< HEAD
 #input-eindtijd:invalid + .validity:after {
     position: absolute;
     content: "Selecteer een tijd na je starttijd.";
@@ -174,34 +154,27 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 }
 
 .ivs-button,
+=======
+>>>>>>> ae2fd9228aefdfe99ac8ef8de84cf6d59a68f46e
 #selecteer-opleiding,
 #selecteer-datum, 
+#registreer-meeloopdag,
 #registreer-meeloop-student,
 #toevoegen-opleiding {
     display: block;
 }
 
-.ivs-button-inline {
-    display: inline;
-}
-
-.ivs-button,
-#registreer-meeloop-student {
+#registreer-meeloopdag,
+#registreer-meeloop-student,
+#bevestig-actie,
+#toevoegen-meeloopdag,
+#bewerken-opleidingsnaam {
     margin-left: auto;
-    width: 80%;
-    max-width: 250px;
     padding: 1rem 2.5rem !important;
     font: normal normal 900 14px/20px 'Futura PT';
     background: var(--blue) !important;
     border: 1px solid var(--grey) !important;
     cursor: pointer;
-}
-
-.selecteer-actie-1, 
-.selecteer-actie-2,
-.button-full-width {
-    width: 100%;
-    max-width: initial;
 }
 
 #anchor-edit-opleiding {
@@ -210,6 +183,11 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 
 #toevoegen-opleiding {
     width: 100%;
+}
+
+#toevoegen-meeloopdag {
+    margin-bottom: 1rem;
+    display: block;
 }
 
 #registreer-meeloop-student {
@@ -342,60 +320,18 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     color: var(--grey);
 }
 .main-heading-admin {
-    font-size: 30px !important;
     font-family: 'Futura PT Heavy';
 }
 
-.ivs-table-th,
 .subheading-2-admin {
-    font-family: 'Futura PT Bold';
-}
-
-.subheading-2-admin {
+    font-family: 'Futura PT Book';
     font-size: 20px;
 }
 
-.accordion-title {
-    border: none !important; /* Override jQuery CSS */
-    color: var(--darkgrey);
-    background: var(--ivs-geel) !important; /* Override jQuery CSS */
-}
-
-.accordion-title.ui-state-active {
-    color:  var(--darkgrey) !important; /* Override jQuery CSS */
-}
-
-.ui-accordion-header-icon {
-    background-position: initial !important; /* Override jQuery CSS */
-}
-
-.ui-icon-triangle-1-e {
-    background-image: url(icons/carret-right-icon.svg) !important; /* Override jQuery CSS */
-}
-
-.ui-icon-triangle-1-s {
-    background-image: url(icons/caret-down-icon.svg) !important; /* Override jQuery CSS */
-}
-
-.paragraph-main,
-.accordion-title,
-.ivs-table-td {
+.paragraph-main {
     font-family: 'Futura PT Book';
-    font-size: 15px !important; /* Override jQuery CSS */
+    font-size: 15px;
     white-space: pre-line;
-}
-
-.ivs-table {
-    border-collapse: collapse;
-}
-
-.ivs-table-td:first-child {
-    min-width: 200px;
-} 
-
-.ivs-table-th, .ivs-table-td {
-    border: 1px solid var(--grey);
-    padding: 1rem;
 }
 
 .table-header {
@@ -439,15 +375,6 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 @media only screen and (min-width: 468px) {   
     .admin-meeloop-table {
         width: 60%;
-    }
-}
-
-@media only screen and (min-width: 528px) {
-    .selecteer-actie-1, 
-    .selecteer-actie-2,
-    .button-full-width {
-        width: initial;
-        max-width: initial;
     }
 }
 

@@ -51,7 +51,7 @@ class Opdracht {
             'show_in_menu'              => 'admin-overzicht-ivs-meeloop-portaal',
             'show_in_nav_menus'         => false,
             'show_in_admin_bar'         => false,
-            'show_in_rest'              => false, // Set to true for Gutenberg Block editor (currently disabled because of routing problem)
+            'show_in_rest'              => true,
             'menu_position'             => null,
             'capability_type'           => 'post',
             'capabilities'              => array(),
