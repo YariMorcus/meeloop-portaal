@@ -99,14 +99,14 @@ if ( !empty( $post_array ) ) {
     }
 
     const DATE = new Date();
-    let CURRENT_DAY = DATE.getDate();
-    let CURRENT_MONTH = DATE.getMonth() + 1;
+    let current_day = DATE.getDate();
+    let current_month = DATE.getMonth() + 1;
     const CURRENT_YEAR = DATE.getFullYear();
 
-    if (returnNumberLength(CURRENT_MONTH) != 2) { CURRENT_MONTH = appendZeroToBeginning(CURRENT_MONTH) };
-    if (returnNumberLength(CURRENT_DAY) != 2) { CURRENT_DAY = appendZeroToBeginning(CURRENT_DAY) };
+    if (returnNumberLength(current_month) != 2) { current_month = appendZeroToBeginning(current_month) };
+    if (returnNumberLength(current_day) != 2) { current_day = appendZeroToBeginning(current_day) };
 
-    const MIN_VALUE = `${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DAY}`;
+    const MIN_VALUE = `${CURRENT_YEAR}-${current_month}-${current_day}`;
 
     document.getElementById('selecteer-datum').setAttribute('min', MIN_VALUE);
 })();
