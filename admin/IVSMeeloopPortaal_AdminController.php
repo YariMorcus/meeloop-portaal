@@ -127,27 +127,6 @@ class IVSMeeloopPortaal_AdminController {
 
         );
 
-        add_submenu_page(
-
-            // string $parent_slug - The slug name for the parent menu
-            'admin-overzicht-ivs-meeloop-portaal',
-            // string $page_title - The text to be displayed in the title tag of the page
-            // when menu is selected
-            __( 'Roosters - IVS Meeloop Portaal', 'ivs-meeloop-portaal' ),
-            // string $menu_title - The text to be used for the menu
-            __( 'Roosters', 'ivs-meeloop-portaal' ),
-            // string $capability - The capability required for this menu to be displayed
-            // to the user
-            'manage_options',
-            // string $menu_slug - The slug name to refer to this menu by
-            // Should only include lowercase alphanumeric, dashes and underscores
-            // Must be unique
-            'roosters-meeloopdag',
-            // callable $function - The function to be called to output the content for this page
-            array( 'IVSMeeloopPortaal_AdminController', 'adminSubMenuRoostersMeeloopdag' )
-
-        );
-
     }
 
     /**
@@ -195,19 +174,6 @@ class IVSMeeloopPortaal_AdminController {
         // Include the view for this menu page
         include IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR . '/opleidingen-meeloopdag.php';
     } 
-
-    /**
-     * adminSubMenuRoostersMeeloopdag
-     * 
-     * The admin roosters page of the IVS meeloop portaal plugin
-     * 
-    */
-    static function adminSubMenuRoostersMeeloopdag() {
-
-        // Include the view for this menu page
-        include IVS_MEELOOP_PORTAAL_PLUGIN_ADMIN_VIEWS_DIR . '/roosters-meeloopdag.php';
-
-    }
 
     /**
      * loadAdminCSS
