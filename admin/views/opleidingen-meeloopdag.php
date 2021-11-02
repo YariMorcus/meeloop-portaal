@@ -125,7 +125,7 @@ if ( !empty( $get_array ) ) {
                                     ?>
                                     <td style="display: none;"><input type="hidden" name="id-opleidingsnaam" value="<?php echo $opleiding->getID(); ?>"></td>
                                     <td><input type="text" name="update-input-opleidingsnaam" maxlength="50" class="input-edit-education" value="<?php echo $opleiding->getNaam(); ?>" required></td>
-                                    <td><input type="submit" name="update-opleidingsnaam" value="Aanpassen" id="bewerken-opleidingsnaam"></td>
+                                    <td><input type="submit" name="update-opleidingsnaam" value="Aanpassen" class="ivs-button"></td>
                                     <?php
                                 } else {
                                     ?>
@@ -152,7 +152,7 @@ if ( !empty( $get_array ) ) {
             <form action="<?php echo $base_url; ?>" method="POST">
                 <label for="input-toevoegen-opleiding" id="label-toevoegen-opleiding">Opleidingsnaam</label>
                 <input type="text" name="input-opleidingsnaam" id="input-toevoegen-opleiding" maxlength="50" required>
-                <input type="submit" name="toevoegen-opleidingsnaam" id="toevoegen-meeloopdag" value="Toevoegen opleiding">
+                <input type="submit" name="toevoegen-opleidingsnaam" class="ivs-button" value="Toevoegen opleiding">
                 <?php echo !empty( $add ) ? "<span class=\"toegevoegd-message\">Opleiding toegevoegd</span>" : ''; ?>
                 <?php echo !empty( $edit ) ? "<span class=\"bewerkt-message\">Opleiding aangepast</span>" : ''; ?>
             </form>

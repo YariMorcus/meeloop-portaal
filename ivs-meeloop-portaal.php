@@ -113,6 +113,40 @@ class IVSMeeloopPortaal {
         <?php 
     }
 
+    function my_admin_queue( $hook_suffix ) {
+
+        if ( $hook_suffix == 'meeloop-portaal_page_roosters-meeloopdag' ) {
+            
+            wp_enqueue_script( 'jquery-accordion-functionality', 'https://code.jquery.com/jquery-3.6.0.js' );
+            wp_enqueue_script( 'jquery-ui', 'https://code.jquery.com/ui/1.13.0/jquery-ui.js', array( 'jquery-accordion-functionality' ) );
+            wp_enqueue_style( 'jquery-ui', 'http://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css' );
+            ?> 
+
+            <script type="text/javascript">
+
+            // Only execute jQuery when HTML body is fully loaded.
+            // Will throw error otherwise
+            document.addEventListener('DOMContentLoaded', function() {
+
+                ( function( $ ) {
+                    $( function() {
+
+                        // Select accordion container, and add interactivity to it
+                        $( "#accordion" ).accordion( {
+                            collapsible: true,
+                            animate: 400  
+                        } );
+                    } );
+
+                })( jQuery );
+            });
+
+            </script>
+
+            <?php
+        }
+    }
+
     /**
      * init
      * 
@@ -137,6 +171,8 @@ class IVSMeeloopPortaal {
         add_filter( 'display_post_states', array( $this, 'showPostState'), 10, 2 );
 
         add_action( 'admin_notices', array( $this, 'infoMessage' ) );
+
+        add_action( 'admin_enqueue_scripts', array( $this, 'my_admin_queue' ) );
 
         // Load the frontend css
         $page_view->loadFrontendCSS();

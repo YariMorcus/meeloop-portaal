@@ -187,7 +187,7 @@ if ( !empty( $get_array ) ) {
                 <option value="versturen-uitnodiging" id="value_2">versturen uitnodiging</option>
                 <option value="verwijderen-meeloop-student" id="value_3">verwijderen</option>
             </select> <!-- #selecteer-actie -->
-            <input type="submit" name="bevestig-actie" id="bevestig-actie" value="Bevestig actie">     
+            <input type="submit" name="bevestig-actie" class="ivs-button ivs-button-inline button-full-width" value="Bevestig actie">     
         </div> <!-- .acties-formulier -->
         
         <table id="mailinglist-tabel">
@@ -249,7 +249,7 @@ if ( !empty( $get_array ) ) {
                 <option value="versturen-uitnodiging" id="value_5">versturen uitnodiging</option>
                 <option value="verwijderen-meeloop-student" id="value_6">verwijderen</option>
             </select> <!-- #selecteer-actie -->
-            <input type="submit" name="bevestig-actie" id="bevestig-actie" value="Bevestig actie">     
+            <input type="submit" name="bevestig-actie" class="ivs-button ivs-button-inline button-full-width" value="Bevestig actie">     
         </div> <!-- .acties-formulier -->      
 
     </form>
