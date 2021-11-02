@@ -79,7 +79,7 @@ if ( !empty( $post_array ) ) {
         <label for="selecteer-datum" id="label-meeloopdag-datum">Selecteer hier de meeloopdag datum</label>
         <input type="date" id="selecteer-datum" name="meeloopdag-datum" min="2021-7-5">
         <input type="text" id="input-naam-docent"name="naam-docent" value="<?php echo wp_get_current_user()->display_name; ?>" readonly>
-        <input type="submit" name="registreer-meeloopdag" id="registreer-meeloopdag" value="Stel meeloopdag in">
+        <input type="submit" name="registreer-meeloopdag" id="registreer-meeloopdag" class="ivs-button" value="Stel meeloopdag in">
 
     </form>
 
