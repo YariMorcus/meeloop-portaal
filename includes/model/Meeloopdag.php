@@ -6,6 +6,10 @@
  * operations: registerMeeloopdag()
 */
 class Meeloopdag {
+
+    // Declare and initialize class properties
+    public $id = 0;
+    public $date = '';
     
     /**
      * getPostValues
@@ -88,7 +92,7 @@ class Meeloopdag {
                 $meeloopdag = new Meeloopdag();
 
                 // Set all the info
-                $meeloopdag->setId( $meeloopdag_object->id );
+                $meeloopdag->setID( $meeloopdag_object->id );
                 $meeloopdag->setMeeloopdagDate( $meeloopdag_object->datum );
 
                 // Add new object to array
@@ -106,12 +110,12 @@ class Meeloopdag {
     }
 
     /**
-     * setId
+     * setID
      * 
      * Set the ID of the opleiding
      * @param int - The id of the opleiding
     */
-    public function setId( $id ) {
+    public function setID( $id ) {
 
         if ( is_int( intval( $id ) ) ) {
 
@@ -136,12 +140,12 @@ class Meeloopdag {
     }
 
     /**
-     * getId
+     * getID
      * 
      * Get the ID of the opleiding
-     * @return {int} - The Id of the opleiding
+     * @return int - The Id of the opleiding
     */
-    public function getId() {
+    public function getID() {
 
         return $this->id;
     }
@@ -150,7 +154,7 @@ class Meeloopdag {
      * getMeeloopdagDate
      * 
      * Get the name of the opleiding
-     * @return {string} - The name of the opleiding
+     * @return string - The name of the opleiding
     */
     public function getMeeloopdagDate() {
 
