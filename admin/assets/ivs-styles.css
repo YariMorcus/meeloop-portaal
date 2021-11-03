@@ -355,11 +355,23 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     font-size: 20px;
 }
 
+
+.collapse-container:not(:last-child) {
+    margin-bottom: .5rem;
+}
+
 .collapse-header {
     padding: .6rem;
     border: none;
+    border-radius: 4px;
     color: var(--darkgrey);
     background: var(--ivs-geel);
+    cursor: pointer;
+}
+
+.no-bottom-border-radius {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .ui-accordion-header-icon {
@@ -384,15 +396,25 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 
 .collapse-content {
     display: none;
+    padding: 2rem;
+    background: #fff;
 }
 
 .ivs-table {
+    display: block;
+    margin: 0 auto;
     border-collapse: collapse;
+    overflow-x: auto;
 }
 
 .ivs-table-td:first-child {
-    min-width: 200px;
-} 
+    min-width: 300px;
+}
+
+.ivs-table-td:not(:first-child) {
+    width: 75px;
+    text-align: center;
+}
 
 .ivs-table-th, .ivs-table-td {
     border: 1px solid var(--grey);
@@ -456,17 +478,28 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     .admin-meeloop-table {
         width: initial;
     }
+
     .admin-meeloop-table th:last-child,
     .admin-meeloop-table td:last-child {
         display: initial;
     }
+
     .two-column-layout {
         display: grid;
         grid-template-columns: repeat(2, 50%);
     }
+
     #anchor-edit-opleiding {
     display: block;
-}    
+    }
+    
+    .ivs-table {
+        display: table;
+    }
+
+    .collapse-content {
+        padding: 2rem 0;
+    }
 }
 @media only screen and (min-width: 800px) {
     .two-column-layout {
