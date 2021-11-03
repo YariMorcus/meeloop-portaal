@@ -50,7 +50,6 @@ if( !empty( $post_array ) ) {
     }
 
 }
-
 ?>
 
 <div class="wrap">
@@ -126,6 +125,40 @@ if( !empty( $post_array ) ) {
                 </p>
                 <?php
             } else {
+                /**
+                 TODO:  Recheck instructions below FIRST before moving on
+                 
+                    DONE 1. Retrieve all unique fk_meeloopdag_id from table ivs_mp_rooster
+                    DONE 2. Store those in an array
+                    DONE 3. Loop over the object
+                    4. Execute a database query where taaknaam, starttijd and eindtijd are being returned, based on the given fk_meeloopdag_id
+                    5. Store those results in an object
+                */
+
+                $meeloopdagen_list = $meeloopdag->getMeeloopdagenList();
+                $meeloopagen_ids_list = array();
+
+                
+                foreach( $meeloopdagen_list as $idx => $meeloopdag ) {
+                    $meeloopagen_ids_list[] = $meeloopdag->id; // Equivalent to array_push( $ids, $meeloopdag->id ) 
+                }
+                
+                echo __FILE__ . __LINE__ . '<br>';
+                foreach( $meeloopagen_ids_list as $meeloopdag_id ) {
+                    
+                    echo '<h3>' . $meeloopdag_id . '</h3>';
+                    $rooster_meeloopdag = $rooster->getRoosterOfMeeloopdag( $meeloopdag_id );
+
+                    echo '<pre>';
+                    var_dump($rooster_meeloopdag); 
+                    echo'</pre>';
+
+                    ?>
+                    
+
+
+                    <?php
+                }
                 ?>
                 <div id="accordion">
                     <h3 class="accordion-title">12 oktober 2021</h3>
