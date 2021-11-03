@@ -124,13 +124,13 @@ if ( !empty( $get_array ) ) {
                     
                     // Loop over all the registered meeloopdagen as an individual meeloopdag
                     setlocale( LC_TIME, 'nld_nld' );
+
                     // and fill in the <option> element with the data
                     foreach( $meeloopdagen_list as $idx => $meeloopdag ) {
 
-
                         // Convert the numerical date to a more friendly date, and convert it to Dutch
                         // Example: 2024-01-03 ==> 3 january 2024 😊
-                        $date = strftime( '%e %B %Y', strtotime($meeloopdag->date) );
+                        $date = strftime( '%e %B %Y', strtotime( $meeloopdag->date ) );
 
                         ?><option value="<?php echo $meeloopdag->id; ?>"><?php echo $date; ?></option><?php
 

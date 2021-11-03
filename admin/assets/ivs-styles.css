@@ -355,14 +355,11 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     font-size: 20px;
 }
 
-.accordion-title {
-    border: none !important; /* Override jQuery CSS */
+.collapse-header {
+    padding: .6rem;
+    border: none;
     color: var(--darkgrey);
-    background: var(--ivs-geel) !important; /* Override jQuery CSS */
-}
-
-.accordion-title.ui-state-active {
-    color:  var(--darkgrey) !important; /* Override jQuery CSS */
+    background: var(--ivs-geel);
 }
 
 .ui-accordion-header-icon {
@@ -378,11 +375,15 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 }
 
 .paragraph-main,
-.accordion-title,
+.collapse-header,
 .ivs-table-td {
     font-family: 'Futura PT Book';
     font-size: 15px !important; /* Override jQuery CSS */
     white-space: pre-line;
+}
+
+.collapse-content {
+    display: none;
 }
 
 .ivs-table {

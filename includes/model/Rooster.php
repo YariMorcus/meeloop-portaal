@@ -47,12 +47,12 @@ class Rooster {
     }
 
     /**
-     * getNrOfRegisteredRoosters
+     * getNrOfRegisteredSchedules
      * 
      * Get the number of registered roosters (schedules)
      * @return int - The number of registered roosters
     */
-    public function getNrOfRegisteredRoosters() {
+    public function getNrOfRegisteredSchedules() {
 
         global $wpdb;
 
@@ -67,13 +67,13 @@ class Rooster {
     }
 
     /**
-     * getRoosterOfMeeloopdag
+     * getscheduleOfMeeloopdag
      * 
      * Get the rooster of a specific meeloopdag, based on the given meeloopdag id
      * @param string - The ID of the meeloopdag
      * @return object - Object containing all the data associated with a specific meeloopdag
     */
-    public function getRoosterOfMeeloopdag($meeloopdag_id) {
+    public function getScheduleOfMeeloopdag($meeloopdag_id) {
 
         try {
 

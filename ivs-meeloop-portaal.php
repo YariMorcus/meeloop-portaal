@@ -129,14 +129,18 @@ class IVSMeeloopPortaal {
             document.addEventListener('DOMContentLoaded', function() {
 
                 ( function( $ ) {
-                    $( function() {
+                    
+                    $( '.collapse-header' ).click(function() {
 
-                        // Select accordion container, and add interactivity to it
-                        $( "#accordion" ).accordion( {
-                            collapsible: true,
-                            animate: 400  
-                        } );
-                    } );
+                        $header = $(this);
+
+                        // Get the next element
+                        $content = $header.next();
+
+                        // Show the content when user clicks on header, or close it if user has already opened it
+                        $content.slideToggle( '500' );
+
+                    });
 
                 })( jQuery );
             });
