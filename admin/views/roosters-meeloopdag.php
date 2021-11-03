@@ -177,8 +177,8 @@ if( !empty( $post_array ) ) {
                         ?>
                                     <tr class="ivs-table-row">
                                         <td class="ivs-table-td"><?php echo $item->taaknaam; ?></td>
-                                        <td class="ivs-table-td"><?php echo $item->starttijd; ?></td>
-                                        <td class="ivs-table-td"><?php echo $item->eindtijd; ?></td> 
+                                        <td class="ivs-table-td"><time datetime="<?php echo $meeloopdagen_list[$idx]->date?>T<?php echo $item->starttijd; ?>"><?php echo $item->starttijd; ?></time></td>
+                                        <td class="ivs-table-td"><time datetime="<?php echo $meeloopdagen_list[$idx]->date?>T<?php echo $item->eindtijd; ?>"><?php echo $item->eindtijd; ?></time></td> 
                                     </tr> <!-- .ivs-table-row -->
                                     <?php
                     }
