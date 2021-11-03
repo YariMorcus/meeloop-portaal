@@ -121,7 +121,7 @@ if ( !empty( $get_array ) ) {
                     
                     // Get all registered meeloopdagen
                     $meeloopdagen_list = $meeloopdag->getMeeloopdagenList();
-                    
+
                     // Loop over all the registered meeloopdagen as an individual meeloopdag
                     setlocale( LC_TIME, 'nld_nld' );
 
@@ -208,7 +208,7 @@ if ( !empty( $get_array ) ) {
             $mailinglist_records = $mailinglist->getMeeloopstudentenList();
 
             // Loop over registered meeloop studenten list as an individual
-            foreach( $mailinglist_records as $meeloop_student ) {
+            foreach( $mailinglist_records as $idx => $meeloop_student ) {
 
                 // Create delete link
                 $params = array( 'actie' => 'verwijderen', 'id' => $meeloop_student->getID() );
@@ -231,7 +231,7 @@ if ( !empty( $get_array ) ) {
                 <td id="mailinglist-tabel-data">
                     <input type="checkbox" name="checkbox-selecteer-individu[]" class="checkbox-individu" value="<?php echo $meeloop_student->getID(); ?>">
                 </td>
-                <td id="mailinglist-tabel-data"><?php echo $meeloopdag_date; ?></td>
+                <td id="mailinglist-tabel-data"><time datetime="<?php echo $meeloopdagen_list[$idx]->date; ?>"><?php echo $meeloopdag_date; ?></time></td>
                 <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getName(); ?></td>
                 <td id="mailinglist-tabel-data"><?php echo $meeloop_student->getEmail(); ?></td>
                 <td id="mailinglist-tabel-data"><?php echo $email_status_label; ?></td>
