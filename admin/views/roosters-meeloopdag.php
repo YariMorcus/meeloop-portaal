@@ -32,7 +32,7 @@ if( !empty( $post_array ) ) {
     if( isset( $post_array['toevoegen-taak'] ) ) {
 
         // Save the schedule (in English: schedule)
-        $result = $schedule->save( $post_array );
+        $result = $schedule->saveSchedule( $post_array );
 
         if( $result )  {
             // Save was succesfull

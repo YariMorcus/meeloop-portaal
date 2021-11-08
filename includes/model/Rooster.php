@@ -117,7 +117,7 @@ class Rooster {
     }
 
     /**
-     * save
+     * saveSchedule
      * 
      * @global type $wpdb - The WordPress database interface
      * 
@@ -125,7 +125,7 @@ class Rooster {
      * @param array - The post array containing the values (insert data)
      * @return boolean - boolean TRUE on success, otherwise FALSE
     */
-    public function save($input_array) {
+    public function saveSchedule($input_array) {
 
         try {
 
