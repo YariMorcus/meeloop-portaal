@@ -641,6 +641,8 @@ class Meeloopstudent {
 
         try {
 
+            global $wpdb;
+
             if ( !isset( $input_array[0] ) ) {
 
                 throw new Exception( __("No user ID's have been supplied") );
