@@ -33,10 +33,10 @@ if( !empty( $post_array ) ) {
     // Check the add form
     $add = FALSE;
 
-    // If user submitted the form, save the meeloopstudent to mailinglist database
+    // If user submitted the form, save the meeloopstudent to meeloop studenten database
     if ( isset( $post_array['registreer-meeloop-student'] ) ) {
 
-        $result = $meeloop_student->addMeeloopstudentToMailinglist( $post_array );
+        $result = $meeloop_student->addMeeloopstudent( $post_array );
 
         if ( $result ) {
 
@@ -90,9 +90,9 @@ if ( !empty( $get_array ) ) {
 }
 ?>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="wrap">
     <h1 class="meeloop-portaal-h1">Toevoegen meeloop student</h1>
     <h2 class="meeloop-portaal-h2">Voeg nieuwe meeloop student toe</h2>
@@ -105,7 +105,7 @@ if ( !empty( $get_array ) ) {
             $toevoegen_meeloopdag_url = add_query_arg( $params, $base_url );
 
             ?>
-            <p class="paragraph-main">Omdat u nog <strong>geen</strong> meeloopdag heeft geregistreerd, kunt u geen meeloop studenten toevoegen aan deze mailing list.
+            <p class="paragraph-main">Omdat u nog <strong>geen</strong> meeloopdag heeft geregistreerd, kunt u nog geen meeloop studenten toevoegen.
             Wanneer u een meeloopdag heeft geregistreerd, zal hier het formulier verschijnen waarmee u meeloop studenten kunt registreren.
             U kunt een meeloopdag registeren op de <a href="<?php echo $toevoegen_meeloopdag_url; ?>">toevoegen meeloopdag</a> pagina.
             </p>
@@ -114,9 +114,9 @@ if ( !empty( $get_array ) ) {
         // If meeloopdagen have been registered, show form
         } else {
             ?> 
-            <form action="#" method="post" id="formulier-toevoegen-mailinglist">
+            <form action="#" method="post" id="formulier-toevoegen">
                 <label for="input-meeloopdag-meeloop-student" id="label-meeloopdag-meeloop-student">Selecteer meeloopdag</label>
-                <select name="meeloopdag-meeloop-student" id="input-meeloopdag-meeloop-student" form="formulier-toevoegen-mailinglist" required>
+                <select name="meeloopdag-meeloop-student" id="input-meeloopdag-meeloop-student" form="formulier-toevoegen" required>
                     <?php 
                     
                     // Get all registered meeloopdagen
@@ -174,7 +174,7 @@ if ( !empty( $get_array ) ) {
                 echo "<span class=\"niet-verzonden-message\">" . $error_message .  "</span>";
             }
             ?> 
-            </form> <!-- #formulier-toevoegen-mailinglist -->
+            </form> <!-- #formulier-toevoegen -->
             <?php
         }
         ?>
@@ -190,18 +190,18 @@ if ( !empty( $get_array ) ) {
             <input type="submit" name="bevestig-actie" id="bevestig-actie" class="ivs-button ivs-button-inline button-full-width" value="Bevestig actie">     
         </div> <!-- .acties-formulier -->
         
-        <table id="mailinglist-tabel">
-            <tr id="mailinglist-tabel-header">
-                <th id="mailinglist-tabel-data">
+        <table id="meeloopstudenten-tabel">
+            <tr id="meeloopstudenten-tabel-header">
+                <th id="meeloopstudenten-tabel-data">
                     Selecteer<br>alles
                     <input type="checkbox" name="checkbox-selecteer-allen" id="checkbox-selecteer-allen">
                 </th>
-                <th id="mailinglist-tabel-data">Meeloopdag</th>
-                <th id="mailinglist-tabel-data">Naam</th>
-                <th id="mailinglist-tabel-data">E-mail</th>
-                <th id="mailinglist-tabel-data">Status</th>
-                <th id="mailinglist-tabel-data">Verwijderen</th>
-            </tr> <!-- #mailinglist-tabel-header-->
+                <th id="meeloopstudenten-tabel-data">Meeloopdag</th>
+                <th id="meeloopstudenten-tabel-data">Naam</th>
+                <th id="meeloopstudenten-tabel-data">E-mail</th>
+                <th id="meeloopstudenten-tabel-data">Status</th>
+                <th id="meeloopstudenten-tabel-data">Verwijderen</th>
+            </tr> <!-- #meeloopstudenten-tabel-header-->
             <?php 
 
             // Get all registered meeloop studenten
@@ -227,20 +227,20 @@ if ( !empty( $get_array ) ) {
                 $email_status_label = $meeloop_student_individual->getEmailStatusLabel( $meeloop_student_individual->getEmailStatusID() );
 
             ?>
-            <tr id="mailinglist-tabel-rij">
-                <td id="mailinglist-tabel-data">
+            <tr id="meeloopstudenten-tabel-rij">
+                <td id="meeloopstudenten-tabel-data">
                     <input type="checkbox" name="checkbox-selecteer-individu[]" class="checkbox-individu" value="<?php echo $meeloop_student_individual->getID(); ?>">
                 </td>
-                <td id="mailinglist-tabel-data"><?php echo $meeloopdag_date; ?></td>
-                <td id="mailinglist-tabel-data"><?php echo $meeloop_student_individual->getName(); ?></td>
-                <td id="mailinglist-tabel-data"><?php echo $meeloop_student_individual->getEmail(); ?></td>
-                <td id="mailinglist-tabel-data"><?php echo $email_status_label; ?></td>
-                <td id="mailinglist-tabel-data"><a href="<?php echo $del_link; ?>" class="verwijder-button">X</a></td>
-            </tr> <!-- #mailinglist-tabel-rij -->
+                <td id="meeloopstudenten-tabel-data"><?php echo $meeloopdag_date; ?></td>
+                <td id="meeloopstudenten-tabel-data"><?php echo $meeloop_student_individual->getName(); ?></td>
+                <td id="meeloopstudenten-tabel-data"><?php echo $meeloop_student_individual->getEmail(); ?></td>
+                <td id="meeloopstudenten-tabel-data"><?php echo $email_status_label; ?></td>
+                <td id="meeloopstudenten-tabel-data"><a href="<?php echo $del_link; ?>" class="verwijder-button">X</a></td>
+            </tr> <!-- #meeloopstudenten-tabel-rij -->
             <?php 
             }
             ?>
-        </table> <!-- #mailinglist-tabel -->
+        </table> <!-- #meeloopstudenten-tabel -->
 
         <div class="acties-formulier">
             <label for="actie" id="label-actie">Geselecteerde meeloop studenten</label>

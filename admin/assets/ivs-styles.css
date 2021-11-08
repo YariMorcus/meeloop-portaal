@@ -6,112 +6,122 @@
 */
 
 @font-face {
-    font-family: 'Futura PT Book';
-    src: url('fonts/FuturaPT-Book.eot');
-    src: url('fonts/FuturaPT-Book.eot?#iefix') format('embedded-opentype'),
-        url('fonts/FuturaPT-Book.woff2') format('woff2'),
-        url('fonts/FuturaPT-Book.woff') format('woff'),
-        url('fonts/FuturaPT-Book.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Futura PT Book";
+  src: url("fonts/FuturaPT-Book.eot");
+  src: url("fonts/FuturaPT-Book.eot?#iefix") format("embedded-opentype"),
+    url("fonts/FuturaPT-Book.woff2") format("woff2"),
+    url("fonts/FuturaPT-Book.woff") format("woff"),
+    url("fonts/FuturaPT-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Futura PT Bold';
-    src: url('../../includes/views/assets/fonts/FuturaPT-Bold.eot');
-    src: url('../../includes/views/assets/fonts/FuturaPT-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../../includes/views/assets/fonts/FuturaPT-Bold.woff2') format('woff2'),
-        url('../../includes/views/assets/fonts/FuturaPT-Bold.woff') format('woff'),
-        url('../../includes/views/assets/fonts/FuturaPT-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Futura PT Bold";
+  src: url("../../includes/views/assets/fonts/FuturaPT-Bold.eot");
+  src: url("../../includes/views/assets/fonts/FuturaPT-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../includes/views/assets/fonts/FuturaPT-Bold.woff2") format("woff2"),
+    url("../../includes/views/assets/fonts/FuturaPT-Bold.woff") format("woff"),
+    url("../../includes/views/assets/fonts/FuturaPT-Bold.ttf")
+      format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Futura PT';
-    src: url('../../includse/views/assets/fonts/FuturaPT-Heavy.eot');
-    src: url('../../includse/views/assets/fonts/FuturaPT-Heavy.eot?#iefix') format('embedded-opentype'),
-        url('../../includse/views/assets/fonts/FuturaPT-Heavy.woff2') format('woff2'),
-        url('../../includse/views/assets/fonts/FuturaPT-Heavy.woff') format('woff'),
-        url('../../includse/views/assets/fonts/FuturaPT-Heavy.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Futura PT";
+  src: url("../../includse/views/assets/fonts/FuturaPT-Heavy.eot");
+  src: url("../../includse/views/assets/fonts/FuturaPT-Heavy.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../includse/views/assets/fonts/FuturaPT-Heavy.woff2")
+      format("woff2"),
+    url("../../includse/views/assets/fonts/FuturaPT-Heavy.woff") format("woff"),
+    url("../../includse/views/assets/fonts/FuturaPT-Heavy.ttf")
+      format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-    --ivs-geel: #fdd02a;
-    --lightgrey: #F0F2F3;
-    --grey: #707070;
-    --darkgrey: #4a4a4a;
-    --blue: #6FCCDD;
+  --ivs-geel: #fdd02a;
+  --lightgrey: #f0f2f3;
+  --grey: #707070;
+  --darkgrey: #4a4a4a;
+  --blue: #6fccdd;
 }
 
-#adminmenu li.toplevel_page_admin-overzicht-ivs-meeloop-portaal:hover, #adminmenu li.opensub>a.toplevel_page_admin-overzicht-ivs-meeloop-portaal, #adminmenu li>a.toplevel_page_admin-overzicht-ivs-meeloop-portaal:focus,
+#adminmenu li.toplevel_page_admin-overzicht-ivs-meeloop-portaal:hover,
+#adminmenu li.opensub > a.toplevel_page_admin-overzicht-ivs-meeloop-portaal,
+#adminmenu li > a.toplevel_page_admin-overzicht-ivs-meeloop-portaal:focus,
 #toplevel_page_admin-overzicht-ivs-meeloop-portaal {
-    background: rgb(253, 208, 42);
+  background: rgb(253, 208, 42);
 }
 
 #toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name {
-    font-weight: bold !important;
+  font-weight: bold !important;
 }
 
-a.toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name, 
-.toplevel_page_admin-overzicht-ivs-meeloop-portaal .dashicons-admin-home::before {
-color: #000 !important;
+a.toplevel_page_admin-overzicht-ivs-meeloop-portaal .wp-menu-name,
+.toplevel_page_admin-overzicht-ivs-meeloop-portaal
+  .dashicons-admin-home::before {
+  color: #000 !important;
 }
 
-a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .wp-menu-name,
-a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .dashicons-admin-home::before {
-    color: #fff!important;
+a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last
+  .wp-menu-name,
+a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last
+  .dashicons-admin-home::before {
+  color: #fff !important;
 }
 
 @media (min-width: 1028px) {
-    .grid-container {
-        display: grid;
-        grid-template-columns: 40% 1fr;
-        grid-column-gap: 10px;
-    }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    grid-column-gap: 10px;
+  }
 }
 
 .meeloop-portaal-h1 {
-    margin-bottom: 1rem !important;
-    font: normal normal 900 30px/38px 'Futura PT';
-    color: var(--grey);
+  margin-bottom: 1rem !important;
+  font: normal normal 900 30px/38px "Futura PT";
+  color: var(--grey);
 }
 
 .meeloop-portaal-h2,
 .acties-formulier {
-    margin: 1.5rem 0;
+  margin: 1.5rem 0;
 }
 
 .meeloop-portaal-h2 {
-    font: normal normal bold 20px "Futura PT";
-    color: var(--grey);
+  font: normal normal bold 20px "Futura PT";
+  color: var(--grey);
 }
 
 #formulier-toevoegen-rooster {
-    padding: 2rem;
-    position: relative;
-    z-index: 1;
-    max-width: 330px;
-    background: #e3e6e8;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  max-width: 330px;
+  background: #e3e6e8;
 }
 
 #formulier-toevoegen-meeloopdag {
-    max-width: 260px;
+  max-width: 260px;
 }
 
 #formulier-toevoegen-meeloopdag,
-#formulier-toevoegen-mailinglist,
+#formulier-toevoegen,
 #registreer-meeloop-student {
-    width: 100%;
+  width: 100%;
 }
 
-#formulier-toevoegen-mailinglist {
-    max-width: 340px;
+#formulier-toevoegen {
+  max-width: 340px;
 }
 
 #label-opleiding,
@@ -124,9 +134,9 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-input-taaknaam,
 #label-input-starttijd,
 #label-input-eindtijd {
-    display: block;
-    color: var(--darkgrey);
-    margin-bottom: 5px;
+  display: block;
+  color: var(--darkgrey);
+  margin-bottom: 5px;
 }
 
 #label-opleiding,
@@ -139,10 +149,10 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #label-input-taaknaam,
 #label-input-startijd,
 #label-input-eindtijd,
-#mailinglist-tabel-data,
+#meeloopstudenten-tabel-data,
 .verwijder-button,
 .verwijderd-message {
-        font: normal normal normal 15px 'Futura PT Book';
+  font: normal normal normal 15px "Futura PT Book";
 }
 
 #selecteer-opleiding,
@@ -155,11 +165,11 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #input-taaknaam,
 #input-starttijd,
 #input-eindtijd {
-    margin-bottom: 1rem;
-    height: 42px;
-    width: 100%;
-    border: 1px solid var(--grey) !important;
-    border-radius: 0;
+  margin-bottom: 1rem;
+  height: 42px;
+  width: 100%;
+  border: 1px solid var(--grey) !important;
+  border-radius: 0;
 }
 
 /* #input-eindtijd:invalid + .validity:after {
@@ -175,335 +185,336 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 
 .ivs-button,
 #selecteer-opleiding,
-#selecteer-datum, 
+#selecteer-datum,
 #registreer-meeloop-student,
 #toevoegen-opleiding {
-    display: block;
+  display: block;
 }
 
 .ivs-button-inline {
-    display: inline;
+  display: inline;
 }
 
 .ivs-button,
 #registreer-meeloop-student {
-    margin-left: auto;
-    width: 80%;
-    max-width: 250px;
-    padding: 1rem 2.5rem !important;
-    font: normal normal 900 14px/20px 'Futura PT';
-    background: var(--blue) !important;
-    border: 1px solid var(--grey) !important;
-    cursor: pointer;
+  margin-left: auto;
+  width: 80%;
+  max-width: 250px;
+  padding: 1rem 2.5rem !important;
+  font: normal normal 900 14px/20px "Futura PT";
+  background: var(--blue) !important;
+  border: 1px solid var(--grey) !important;
+  cursor: pointer;
 }
 
-.selecteer-actie-1, 
+.selecteer-actie-1,
 .selecteer-actie-2,
 .button-full-width {
-    width: 100%;
-    max-width: initial;
+  width: 100%;
+  max-width: initial;
 }
 
 #anchor-edit-opleiding {
-    display: none;
+  display: none;
 }
 
 #toevoegen-opleiding {
-    width: 100%;
+  width: 100%;
 }
 
 #registreer-meeloop-student {
-    margin-bottom: 1rem;
-    max-width: 240px;
-    white-space: normal;
+  margin-bottom: 1rem;
+  max-width: 240px;
+  white-space: normal;
 }
 
 #input-naam-docent {
-    display: none;   
+  display: none;
 }
 
 .info-formulier {
-    margin-top: 1rem;
-    display: inline-block;
-    background: rgb(253, 208, 42);
-    padding: .4rem;
-    color: black;
+  margin-top: 1rem;
+  display: inline-block;
+  background: rgb(253, 208, 42);
+  padding: 0.4rem;
+  color: black;
 }
 
 .acties-formulier {
-    padding: .7rem 2rem;
-    background: var(--lightgrey);
-    border: 1px solid var(--grey) !important;
+  padding: 0.7rem 2rem;
+  background: var(--lightgrey);
+  border: 1px solid var(--grey) !important;
 }
 
-#mailinglist-tabel {
-    border-collapse: collapse;
-    background: #fff;
+#meeloopstudenten-tabel {
+  border-collapse: collapse;
+  background: #fff;
 }
 
 #checkbox-selecteer-allen {
-    display: block;
-    margin: 1rem auto 0;
+  display: block;
+  margin: 1rem auto 0;
 }
 
-#mailinglist-tabel-header {
-    border-bottom: 2px solid var(--grey) !important;
+#meeloopstudenten-tabel-header {
+  border-bottom: 2px solid var(--grey) !important;
 }
 
-#mailinglist-tabel-header > th,
+#meeloopstudenten-tabel-header > th,
 .verwijder-button {
-    font-weight: 700;
+  font-weight: 700;
 }
-#mailinglist-tabel-header > th:nth-child(1) {
-    padding: 1rem;
-}
-
-#mailinglist-tabel-header > th:nth-child(2),
-#mailinglist-tabel-header > th:nth-child(3) {
-    padding-left: 1rem;
-    text-align: left;
+#meeloopstudenten-tabel-header > th:nth-child(1) {
+  padding: 1rem;
 }
 
-#mailinglist-tabel-header > th:nth-child(4) {
-    padding: 2rem 3rem;
+#meeloopstudenten-tabel-header > th:nth-child(2),
+#meeloopstudenten-tabel-header > th:nth-child(3) {
+  padding-left: 1rem;
+  text-align: left;
 }
 
-#mailinglist-tabel-header > th:nth-child(5) {
-    padding: 2rem 1rem;
+#meeloopstudenten-tabel-header > th:nth-child(4) {
+  padding: 2rem 3rem;
 }
 
-#mailinglist-tabel-rij > td:nth-child(1) {
-    padding: 1rem;
-    text-align: center;
+#meeloopstudenten-tabel-header > th:nth-child(5) {
+  padding: 2rem 1rem;
 }
 
-#mailinglist-tabel-rij > #mailinglist-tabel-data:nth-child(2), 
-#mailinglist-tabel-rij > #mailinglist-tabel-data:nth-child(3) {
-    padding-right: 2rem;
-    padding-left: 1rem;
-    text-align: left;
+#meeloopstudenten-tabel-rij > td:nth-child(1) {
+  padding: 1rem;
+  text-align: center;
 }
 
-#mailinglist-tabel-rij > #mailinglist-tabel-data:nth-child(4),
-#mailinglist-tabel-rij > #mailinglist-tabel-data:nth-child(5) {
-    text-align: center;
+#meeloopstudenten-tabel-rij > #meeloopstudenten-tabel-data:nth-child(2),
+#meeloopstudenten-tabel-rij > #meeloopstudenten-tabel-data:nth-child(3) {
+  padding-right: 2rem;
+  padding-left: 1rem;
+  text-align: left;
 }
 
-#mailinglist-tabel-data {
-    border: 1px solid var(--grey) !important;
+#meeloopstudenten-tabel-rij > #meeloopstudenten-tabel-data:nth-child(4),
+#meeloopstudenten-tabel-rij > #meeloopstudenten-tabel-data:nth-child(5) {
+  text-align: center;
+}
+
+#meeloopstudenten-tabel-data {
+  border: 1px solid var(--grey) !important;
 }
 
 .verwijder-button {
-    color: var(--darkgrey);
-    text-decoration: none;
+  color: var(--darkgrey);
+  text-decoration: none;
 }
 .toegevoegd-message,
 .bewerkt-message,
 .verwijderd-message,
 .verzonden-message {
-    padding: 1rem;
-    display: block;
-    color: green;
-    font-weight: 700;
-    text-align: center;
-    border: 2px solid green;
+  padding: 1rem;
+  display: block;
+  color: green;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid green;
 }
 
 .niet-verzonden-message {
-    padding: 1rem;
-    display: block;
-    color: red;
-    font-weight: 700;
-    border: 2px solid red;
+  padding: 1rem;
+  display: block;
+  color: red;
+  font-weight: 700;
+  border: 2px solid red;
 }
 
 .ui-dialog-titlebar {
-    color: var(--grey) !important; /* Overide jquery css */
-    background: var(--ivs-geel)!important; /* Overide jquery css */
+  color: var(--grey) !important; /* Overide jquery css */
+  background: var(--ivs-geel) !important; /* Overide jquery css */
 }
 
 .ui-dialog-buttonset > button:nth-child(1) {
-    color: var(--darkgrey);
-    border: 1px solid var(--grey);
-    background: #F0F2F3;
+  color: var(--darkgrey);
+  border: 1px solid var(--grey);
+  background: #f0f2f3;
 }
-
 
 .ui-dialog-buttonset > button:nth-child(2) {
-    border: 1px solid var(--grey);
-    color: white;
-    background: #cf352e;
+  border: 1px solid var(--grey);
+  color: white;
+  background: #cf352e;
 }
 
-#dialog-confirm { display: none; }
+#dialog-confirm {
+  display: none;
+}
 
-.main-heading-admin, 
+.main-heading-admin,
 .subheading-2-admin {
-    color: var(--grey);
+  color: var(--grey);
 }
 .main-heading-admin {
-    font-size: 30px !important;
-    font-family: 'Futura PT Heavy';
+  font-size: 30px !important;
+  font-family: "Futura PT Heavy";
 }
 
 .ivs-table-th,
 .subheading-2-admin {
-    font-family: 'Futura PT Bold';
+  font-family: "Futura PT Bold";
 }
 
 .subheading-2-admin {
-    font-size: 20px;
+  font-size: 20px;
 }
 
-
 .collapse-container:not(:last-child) {
-    margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .collapse-header {
-    padding: .6rem;
-    border: none;
-    border-radius: 4px;
-    color: var(--darkgrey);
-    background: var(--ivs-geel);
-    cursor: pointer;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 4px;
+  color: var(--darkgrey);
+  background: var(--ivs-geel);
+  cursor: pointer;
 }
 
 .no-bottom-border-radius {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .ui-accordion-header-icon {
-    background-position: initial !important; /* Override jQuery CSS */
+  background-position: initial !important; /* Override jQuery CSS */
 }
 
 .ui-icon-triangle-1-e {
-    background-image: url(icons/carret-right-icon.svg) !important; /* Override jQuery CSS */
+  background-image: url(icons/carret-right-icon.svg) !important; /* Override jQuery CSS */
 }
 
 .ui-icon-triangle-1-s {
-    background-image: url(icons/caret-down-icon.svg) !important; /* Override jQuery CSS */
+  background-image: url(icons/caret-down-icon.svg) !important; /* Override jQuery CSS */
 }
 
 .paragraph-main,
 .collapse-header,
 .ivs-table-td {
-    font-family: 'Futura PT Book';
-    font-size: 15px !important; /* Override jQuery CSS */
-    white-space: pre-line;
+  font-family: "Futura PT Book";
+  font-size: 15px !important; /* Override jQuery CSS */
+  white-space: pre-line;
 }
 
 .collapse-content {
-    display: none;
-    padding: 2rem;
-    background: #fff;
+  display: none;
+  padding: 2rem;
+  background: #fff;
 }
 
 .ivs-table {
-    display: block;
-    margin: 0 auto;
-    border-collapse: collapse;
-    overflow-x: auto;
+  display: block;
+  margin: 0 auto;
+  border-collapse: collapse;
+  overflow-x: auto;
 }
 
 .ivs-table-td:first-child {
-    min-width: 300px;
+  min-width: 300px;
 }
 
 .ivs-table-td:not(:first-child) {
-    width: 75px;
-    text-align: center;
+  width: 75px;
+  text-align: center;
 }
 
-.ivs-table-th, .ivs-table-td {
-    border: 1px solid var(--grey);
-    padding: 1rem;
+.ivs-table-th,
+.ivs-table-td {
+  border: 1px solid var(--grey);
+  padding: 1rem;
 }
 
 .table-header {
-    text-align: left;
-    border: 1px solid var(--grey);
+  text-align: left;
+  border: 1px solid var(--grey);
 }
 
 .admin-meeloop-table {
-    width: 100%;
+  width: 100%;
 }
 
 .admin-meeloop-table th:first-child {
-    padding-right: 6rem;
-    padding-left: 2rem;
+  padding-right: 6rem;
+  padding-left: 2rem;
 }
 
 .admin-meeloop-table th:last-child,
 .admin-meeloop-table td:last-child {
-    display: none;
+  display: none;
 }
 
 .admin-meeloop-table tr {
-    height: 60px;
+  height: 60px;
 }
 
 .admin-meeloop-table td:last-child {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 .td-no-edit-input {
-    padding-left: 2rem;
+  padding-left: 2rem;
 }
 
 .input-edit-education {
-    height: 54px;
-    width: 100%;
-    border-radius: 0 !important;
-    padding-left: 2rem !important;
+  height: 54px;
+  width: 100%;
+  border-radius: 0 !important;
+  padding-left: 2rem !important;
 }
 
-@media only screen and (min-width: 468px) {   
-    .admin-meeloop-table {
-        width: 60%;
-    }
+@media only screen and (min-width: 468px) {
+  .admin-meeloop-table {
+    width: 60%;
+  }
 }
 
 @media only screen and (min-width: 528px) {
-    .selecteer-actie-1, 
-    .selecteer-actie-2,
-    .button-full-width {
-        width: initial;
-        max-width: initial;
-    }
+  .selecteer-actie-1,
+  .selecteer-actie-2,
+  .button-full-width {
+    width: initial;
+    max-width: initial;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-    .admin-meeloop-table {
-        width: initial;
-    }
+  .admin-meeloop-table {
+    width: initial;
+  }
 
-    .admin-meeloop-table th:last-child,
-    .admin-meeloop-table td:last-child {
-        display: initial;
-    }
+  .admin-meeloop-table th:last-child,
+  .admin-meeloop-table td:last-child {
+    display: initial;
+  }
 
-    .two-column-layout {
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
-    }
+  .two-column-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
 
-    #anchor-edit-opleiding {
+  #anchor-edit-opleiding {
     display: block;
-    }
-    
-    .ivs-table {
-        display: table;
-    }
+  }
 
-    .collapse-content {
-        padding: 2rem 0;
-    }
+  .ivs-table {
+    display: table;
+  }
+
+  .collapse-content {
+    padding: 2rem 0;
+  }
 }
 @media only screen and (min-width: 800px) {
-    .two-column-layout {
-        display: grid;
-        grid-template-columns: 400px 300px;
-    }    
+  .two-column-layout {
+    display: grid;
+    grid-template-columns: 400px 300px;
+  }
 }

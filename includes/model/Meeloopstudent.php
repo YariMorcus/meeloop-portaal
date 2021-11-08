@@ -5,7 +5,7 @@
  * • email_meeloop_student
  * • email_status
  * addMeeloopstudentToMailinglist
- * removeMeeloopstudentFromMailinglist
+ * removeMeeloopstudent
 */
 class Meeloopstudent {
 
@@ -131,7 +131,7 @@ class Meeloopstudent {
                 foreach( $post_array[0] as $user_id ) {
 
                     // Pass each checkbox value in database query for deletion
-                    $this->removeMeeloopstudentFromMailinglist( null, $user_id );
+                    $this->removeMeeloopstudent( null, $user_id );
 
                 }
 
@@ -190,7 +190,7 @@ class Meeloopstudent {
                         foreach ($item as $checkbox_value) {
 
                             // Pass each checkbox value in database query for deletion
-                            $this->removeMeeloopstudentFromMailinglist( null, $checkbox_value);
+                            $this->removeMeeloopstudent( null, $checkbox_value);
 
                         }
                     }
@@ -204,7 +204,7 @@ class Meeloopstudent {
                 // Delete current meeloop student
                 if ( !is_null( $get_array['id'] ) ) {
 
-                    $this->removeMeeloopstudentFromMailinglist( $get_array, null );
+                    $this->removeMeeloopstudent( $get_array, null );
 
                 }
 
@@ -229,16 +229,16 @@ class Meeloopstudent {
     }
 
     /**
-     * removeMeeloopstudentFromMailinglist
+     * removeMeeloopstudent
      * 
-     * Delete the current meeloop student from mailinglist (database)
+     * Delete the current meeloop student from the database
      * 
      * @global $wpdb - The WordPress database class
      * @param {array} - $input_array containing delete id
      * @param {string} - $checkbox_input_value containing delete id (checkboxes)
      * @return boolean TRUE on success or FALSE
     */
-    public function removeMeeloopstudentFromMailinglist( $input_array, $checkbox_input_value ) {
+    public function removeMeeloopstudent( $input_array, $checkbox_input_value ) {
 
         try {
 
@@ -264,7 +264,7 @@ class Meeloopstudent {
             global $wpdb;
 
             $wpdb->delete( 
-                'ivs_mp_mailinglist', 
+                'ivs_mp_meeloopstudent', 
                 array( 'meeloop_student_id' => $user_id ),
                 array( '%d' )
             );
@@ -304,7 +304,7 @@ class Meeloopstudent {
         $return_array = array();
 
         // Execute the SQL query, and store results in $result_array
-        $result_array = $wpdb->get_results( "SELECT * FROM ivs_mp_mailinglist ORDER BY meeloop_student_id", ARRAY_A );
+        $result_array = $wpdb->get_results( "SELECT * FROM ivs_mp_meeloopstudent ORDER BY meeloop_student_id", ARRAY_A );
 
         // For all database results:
 
@@ -533,7 +533,7 @@ class Meeloopstudent {
     /**
      * addMeeloopstudentToMailinglist
      * 
-     * Save the meeloopstudent in database, so user can be shown in mailinglist
+     * Save the meeloopstudent in database
      * 
      * @global type $wpdb - The WordPress database class
      * @param {array} $input_array - Array containing the data
@@ -541,7 +541,7 @@ class Meeloopstudent {
      * if { !isset( $input_array['naam-meeloop-student'] ) OR !isset( $input_array['email-meeloop-student']) }, 
      * Check if variable has NOT been declared and or null
     */
-    public function addMeeloopstudentToMailinglist($input_array) {
+    public function addMeeloopstudent($input_array) {
 
         try {
 
@@ -560,7 +560,7 @@ class Meeloopstudent {
             global $wpdb;
 
             // Insert query
-            $wpdb->query( $wpdb->prepare( "INSERT INTO ivs_mp_mailinglist (fk_meeloopdag_id, meeloop_student_naam, meeloop_student_email) VALUES (%s, %s, %s);", $input_array['meeloopdag-meeloop-student'], $input_array['naam-meeloop-student'], $input_array['email-meeloop-student'] ) );
+            $wpdb->query( $wpdb->prepare( "INSERT INTO ivs_mp_meeloopstudent (fk_meeloopdag_id, meeloop_student_naam, meeloop_student_email) VALUES (%s, %s, %s);", $input_array['meeloopdag-meeloop-student'], $input_array['naam-meeloop-student'], $input_array['email-meeloop-student'] ) );
 
 
             // Error? It's in there
@@ -601,7 +601,7 @@ class Meeloopstudent {
         global $wpdb;
 
         // Setup query
-        $query = "SELECT `meeloop_student_email` FROM `ivs_mp_mailinglist` WHERE meeloop_student_id = %s";
+        $query = "SELECT `meeloop_student_email` FROM `ivs_mp_meeloopstudent` WHERE meeloop_student_id = %s";
 
         // Setup array for e-mails list
         $emails_list = array();
@@ -651,7 +651,7 @@ class Meeloopstudent {
             $emails_list = $this->getEmailFromDatabase( $input_array[0] );
 
             // Define the subject
-            $subject = '[Hier onderwerp mailinglist]';
+            $subject = '[Hier onderwerp]';
 
             // Define the message
             $message = "Dit is de <b>body</b> van de e-mail.

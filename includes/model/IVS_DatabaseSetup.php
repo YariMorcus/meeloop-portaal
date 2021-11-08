@@ -20,7 +20,7 @@ class IVS_DatabaseSetup {
         return array(
 
             $table_name_1 = 'ivs_mp_email_status', 
-            $table_name_2 = 'ivs_mp_mailinglist',
+            $table_name_2 = 'ivs_mp_meeloopstudent',
             $table_name_3 = 'ivs_mp_meeloopdag',
             $table_name_4 = 'ivs_mp_opleiding',
             $table_name_5 = 'ivs_mp_rooster'
