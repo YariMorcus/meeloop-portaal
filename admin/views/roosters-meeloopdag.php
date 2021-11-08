@@ -111,7 +111,7 @@ if( !empty( $post_array ) ) {
             </form> <!-- #formulier-toevoegen-schedule -->
         </div>
         <div>
-            <h2 class="subheading-2-admin">Overzicht schedules</h2>
+            <h2 class="subheading-2-admin">Overzicht roosters</h2>
             <?php 
             if( $schedule->getNrOfRegisteredschedules() < 1 ) {
                 ?>

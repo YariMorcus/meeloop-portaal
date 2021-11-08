@@ -162,7 +162,7 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
     border-radius: 0;
 }
 
-#input-eindtijd:invalid + .validity:after {
+/* #input-eindtijd:invalid + .validity:after {
     position: absolute;
     content: "Selecteer een tijd na je starttijd.";
     padding-left: 5px;
@@ -171,7 +171,7 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last .
 #input-eindtijd:invalid + span + .ivs-button {
     pointer-events: none;
     background: grey !important;
-}
+} */
 
 .ivs-button,
 #selecteer-opleiding,

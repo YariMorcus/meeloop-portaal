@@ -7,7 +7,7 @@
  * addMeeloopstudentToMailinglist
  * removeMeeloopstudentFromMailinglist
 */
-class Mailinglist {
+class Meeloopstudent {
 
     // Declare and initialize class properties
     public $meeloop_student_id = 0;
@@ -311,7 +311,7 @@ class Mailinglist {
         foreach( $result_array as $idx => $array ) {
 
             // New object
-            $meeloop_student = new Mailinglist();
+            $meeloop_student = new Meeloopstudent();
 
             // Set all info
             $meeloop_student->setID( $array['meeloop_student_id'] );
