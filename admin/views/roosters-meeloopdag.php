@@ -120,16 +120,7 @@ if( !empty( $post_array ) ) {
                 </p> <!-- .paragraph-main -->
                 <?php
             } else {
-                /**
-                 TODO:  Recheck instructions below FIRST before moving on
-                 
-                    DONE 1. Retrieve all unique fk_meeloopdag_id from table ivs_mp_schedule
-                    DONE 2. Store those in an array
-                    DONE 3. Loop over the object
-                    4. Execute a database query where taaknaam, starttijd and eindtijd are being returned, based on the given fk_meeloopdag_id
-                    5. Store those results in an object
-                */
-
+                
                 // Get a list of all registered meeloopdagen
                 $meeloopdagen_list = $meeloopdag->getMeeloopdagenList();
 

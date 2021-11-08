@@ -144,11 +144,11 @@ class Meeloopstudent {
                     $result = $this->sendEmailToMeeloopstudent( $post_array );
 
                     /**
-                       If e-mails have been send succesfully, inform the frontend the current action
-                       array with TRUE or FALSE has been used for the following reason:
-                       wp_mail() function returns TRUE on success or FALSE otherwise
-                       In both situations, a different message needs to be shown to the user, BUT both messages
-                       are related to 'versturen-uitnodiging'
+                     * If e-mails have been send succesfully, inform the frontend the current action
+                     * array with TRUE or FALSE has been used for the following reason:
+                     * wp_mail() function returns TRUE on success or FALSE otherwise
+                     * In both situations, a different message needs to be shown to the user, BUT both messages
+                     * are related to 'versturen-uitnodiging'
                     */
                      
                     $action = $result ? array('versturen-uitnodiging', TRUE) : array('versturen-uitnodiging', FALSE);                    
