@@ -47,12 +47,12 @@ class Rooster {
     }
 
     /**
-     * getNrOfRegisteredRoosters
+     * getNrOfRegisteredSchedules
      * 
      * Get the number of registered roosters (schedules)
      * @return int - The number of registered roosters
     */
-    public function getNrOfRegisteredRoosters() {
+    public function getNrOfRegisteredSchedules() {
 
         global $wpdb;
 
@@ -67,7 +67,57 @@ class Rooster {
     }
 
     /**
-     * save
+     * getscheduleOfMeeloopdag
+     * 
+     * Get the rooster of a specific meeloopdag, based on the given meeloopdag id
+     * @param string - The ID of the meeloopdag
+     * @return object - Object containing all the data associated with a specific meeloopdag
+    */
+    public function getScheduleOfMeeloopdag($meeloopdag_id) {
+
+        try {
+
+            // Check if ID has been given and NOT null
+            if ( !isset( $meeloopdag_id ) ) {
+
+                // Throw new exception message for user
+                throw new Exception( __( "ID of meeloopdag has not been given, or is equal to null." ) );
+
+            }
+
+            global $wpdb;
+
+            // Setup query
+            $select_query = "SELECT `taaknaam`, `starttijd`, `eindtijd` FROM `ivs_mp_rooster` WHERE `fk_meeloopdag_id`= %s";
+
+            $rooster_meeloopdag = $wpdb->get_results( $wpdb->prepare( $select_query, $meeloopdag_id ), OBJECT );
+
+            if ( isset( $rooster_meeloopdag ) && is_array( $rooster_meeloopdag ) ) {
+                
+                return $rooster_meeloopdag;
+
+            }
+
+            // Error? It's in there
+            if ( !empty( $wpdb->last_error ) ) {
+
+                $this->last_error = $wpdb->last_error;
+                return FALSE;
+
+            }
+
+        } catch(Exception $exc) {
+
+            $this->last_error = $wpdb->last_error;
+            $exc->getMessage();
+
+        }
+
+
+    }
+
+    /**
+     * saveSchedule
      * 
      * @global type $wpdb - The WordPress database interface
      * 
@@ -75,7 +125,7 @@ class Rooster {
      * @param array - The post array containing the values (insert data)
      * @return boolean - boolean TRUE on success, otherwise FALSE
     */
-    public function save($input_array) {
+    public function saveSchedule($input_array) {
 
         try {
 
@@ -134,9 +184,9 @@ class Rooster {
             
         } catch(Exception $exc) {
 
-            // @todo: add error handling
-            echo '<pre>' . $exc->getTraceAsString() . '</pre>';
-            
+            $this->last_error = $wpdb->last_error;
+            $exc->getMessage();      
+
         }
 
     }

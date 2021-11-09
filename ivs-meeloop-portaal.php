@@ -129,14 +129,43 @@ class IVSMeeloopPortaal {
             document.addEventListener('DOMContentLoaded', function() {
 
                 ( function( $ ) {
-                    $( function() {
+                    
+                    $( '.collapse-header' ).click(function() {
 
-                        // Select accordion container, and add interactivity to it
-                        $( "#accordion" ).accordion( {
-                            collapsible: true,
-                            animate: 400  
+                        $header = $(this);
+
+                        // Get the next element
+                        $content = $header.next();
+
+                        // If collapse is already open, close it and add the bottom border radius
+                        // Else, open the collapse, and remove bottom border radius
+                        if ( $header.hasClass( 'no-bottom-border-radius' ) ) {
+
+                            // Add bottom border radius back to how it was
+                            $header.removeClass( 'no-bottom-border-radius' );
+
+                            // Hide the content
+                            $content.slideToggle( '500' );
+
+                        } else {
+
+                        // Show the content when user clicks on header, or close it if user has already opened it
+                        $content.slideToggle( '500', function() {
+                            
+                            $header.addClass('no-bottom-border-radius');
+
                         } );
-                    } );
+                        }
+
+
+                    });
+
+                    /**
+                            1. Get current .collapse-header
+                            2. check if next element contains style display block
+                            3. If yes, remove .no-border-bottom-radius from .collapse-header
+
+                    */
 
                 })( jQuery );
             });
