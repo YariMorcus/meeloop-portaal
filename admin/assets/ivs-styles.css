@@ -197,6 +197,7 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last
 
 .ivs-button,
 #registreer-meeloop-student {
+  margin-bottom: 1rem;
   margin-left: auto;
   width: 80%;
   max-width: 250px;
