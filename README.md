@@ -8,22 +8,19 @@ The project itself is not complete because some features are still missing. The 
 
 ## Table of contents
 
-- [Features users](#sparkles-features-users)
-- [Features administrator](#sparkles-features-administrator)
+- [Features students](#sparkles-features-students)
+- [Features teachers](#sparkles-features-teachers)
 - [Features back-end](#sparkles-features-back-end)
 - [Made with](#made-with)
 - [Screenshots](#screenshots)
-  - [Login page](#login-page)
-  - [Login page email (error example)](#login-page-email-error-example)
-  - [Register page](#register-page)
-  - [Register page (errors)](#register-page-errors)
-  - [Dashboard user](#dashboard-user)
-  - [Requesting a check page (user)](#requesting-a-check-page-user)
-  - [Requesting a check page with errors (user)](#requesting-a-check-page-with-errors-user)
-  - [Dashboard admin](#dashboard-admin)
-  - [Information page admin (previously submitted applications)](#information-page-admin-previously-submitted-applications)
-  - [Information page admin edit feature (previously submitted applications)](#information-page-admin-edit-feature-previously-submitted-applications)
-  - [Confirmation message editing status (previously submitted applications)](#confirmation-message-editing-status-previously-submitted-applications)
+  - [Dashboard student](#dashboard-student)
+  - [Page for unauthorised people](#page-for-unauthorised-people)
+  - [Adding new task feature](#adding-new-task-feature)
+  - [Adding new open day feature](adding-new-open-day-feature)
+  - [Adding new student feature](#adding-new-student-feature)
+  - [Adding new education feature](#adding-new-education-feature)
+  - [Adding new schedule feature](#adding-new-schedule-feature)
+  - [Automatically generated WordPress pages](#automatically-generated-wordpress-pages)
 
 ### :sparkles: Features students
 The only feature the students currently have is their dashboard.
@@ -91,6 +88,7 @@ This feature has been developed by using custom post types within WordPress
 
 ### Adding new student feature
 There are some alignment issues which I haven't solved yet.
+
 ![Adding new student feature](screenshots/adding-new-student-feature.png)
 
 ### Adding new education feature
