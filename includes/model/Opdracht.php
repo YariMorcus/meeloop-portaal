@@ -8,7 +8,7 @@
 class Opdracht {
 
     // Define table name to prevent future spelling mistakes
-    private const TABLE_NAME = 'ivs_mp_opleiding';
+    private $TABLE_NAME = 'ivs_mp_opleiding';
 
 
     /**
