@@ -1,4 +1,4 @@
-# Project name: Meeloop portaal IVS (Dutch)
+# Project name: Meeloop portaal (Dutch)
 ## WordPress plugin
 
 ## :books: Description
