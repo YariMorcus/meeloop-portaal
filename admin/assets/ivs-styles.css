@@ -172,6 +172,22 @@ a.wp-menu-open.toplevel_page_admin-overzicht-ivs-meeloop-portaal.menu-top-last
   border-radius: 0;
 }
 
+.invalid-outline {
+  outline: 2px solid #B22222;
+}
+
+.validity {
+  display: none;
+}
+
+.validity-show {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.4rem;
+  background: #B22222;
+  color: white;
+}
+
 /* #input-eindtijd:invalid + .validity:after {
     position: absolute;
     content: "Selecteer een tijd na je starttijd.";

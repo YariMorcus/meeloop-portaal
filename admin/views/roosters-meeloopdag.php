@@ -102,8 +102,8 @@ if( !empty( $post_array ) ) {
                  <label for="input-starttijd"" id="label-input-starttijd">Selecteer starttijd *</label>
                  <input type="time" name="input-starttijd" id="input-starttijd" pattern="[0-9]{2}:[0-9]{2}" required>
                  <label for="input-eindtijd" id="label-input-eindtijd">Selecteer eindtijd *</label>
-                 <input type="time" name="input-eindtijd" id="input-eindtijd" pattern="[0-9]{2}:[0-9]{2}" required>
-                 <span class="validity"></span>
+                 <input type="time" name="input-eindtijd" id="input-eindtijd" min="00:00" max="23:59" pattern="[0-9]{2}:[0-9]{2}" required>
+                 <span class="validity">Vul een tijd in later dan <span id="min-time"></span></span>
                  <input type="submit" name="toevoegen-taak" class="ivs-button" value="Toevoegen taak">
                 <?php
             }
@@ -189,21 +189,66 @@ if( !empty( $post_array ) ) {
     const INPUT_START_TIJD = document.querySelector('#input-starttijd');
     const INPUT_EIND_TIJD = document.querySelector('#input-eindtijd');
 
-    // When user leaves input starttijd field after filling in,
-    // retrieve the value
+    // When user leaves input starttijd field after filling in
     INPUT_START_TIJD.addEventListener('blur', () => {
+
+        function betweenNumber(num, min, max) {
+            return num >= min && num <= max;
+        }
 
         // Set the value from the input start tijd as a minimum for the eind tijd
         // In other words: prevents user from giving up a time BEFORE the start time
-        INPUT_EIND_TIJD.setAttribute('min', INPUT_START_TIJD.value);
+        
+        // Get value of given start time
+        var res = INPUT_START_TIJD.value;
+
+        // Get hour and minute
+        let hour = res.split(":")[0];
+        let minute = parseInt(res.split(":")[1]);
+
+        // Add 1 minute
+        minute = minute + 1;
+
+        // If minute is between 0 and 9, convert number to string, and append
+        // a zero (0) to it. Otherwise, only convert number to string.
+        // Otherwise format for min attr. isn't valid (valid format: HH:MM)
+        if (betweenNumber(minute, 0, 9)) {
+
+            // Convert back to string
+            minute = minute.toString();
+
+            // Append a zero (0) to it
+            minute = minute.padStart(2, 0);
+
+        } else {
+
+            // Convert back to string
+            minute = minute.toString();
+
+        }
+
+        // Combine both hour and minute
+        const MINIMUM_TIME = hour + ":" + minute;
+
+        // Set the modified time as a minimum
+        INPUT_EIND_TIJD.setAttribute('min', MINIMUM_TIME);
 
     });
 
-    INPUT_EIND_TIJD.addEventListener('blur', () => {
-        
-        /**
-        1. Check if input eindtijd is bigger than input eindtijd
-        2. If not, insert a span below #input-eindtijd, and show an error message
-        */
+    INPUT_EIND_TIJD.addEventListener('invalid', () => {
+
+        // Show red outline as error indicator
+        INPUT_EIND_TIJD.classList.add('invalid-outline');
+
+        // Show error message
+        INPUT_EIND_TIJD.nextElementSibling.classList.add('validity-show');
+
+        // Indicate user which time needs to be given as a minimum
+        document.getElementById('min-time').innerText = INPUT_START_TIJD.value;
+
+        INPUT_EIND_TIJD.addEventListener('input', () => {
+            //alert('verandere!');
+        });
+
     });
 </script>
