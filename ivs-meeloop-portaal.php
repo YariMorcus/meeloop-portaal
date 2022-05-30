@@ -3,8 +3,8 @@
 defined( 'ABSPATH' ) OR exit;
 
 /**
- * Plugin Name: Innovision Solutions - meeloop portaal
- * Plugin URI: http://stichtingivs.nl
+ * Plugin Name: Open day portal
+ * Plugin URI: #
  * Description: This WordPress plugin adds a 'meeloop portaal' as functionality, where students can see their date, planning, tasks and informational resources concerning the open day
  * Version: 0.1
  * Requires at least: 4.0
@@ -32,7 +32,7 @@ register_deactivation_hook( __FILE__, array( 'IVSMeeloopPortaal', 'on_deactivati
 
 /**
  * Class to setup the plugin
- * @author Yari Morcus ymorcus@student.scalda.nl
+ * @author Yari Morcus
  * @version 0.1
  * 
 */

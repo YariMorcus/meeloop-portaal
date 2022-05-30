@@ -2,7 +2,7 @@
     <div class="dashboard">
         <header class="dashboard__header">
             <a href="<?php echo get_site_url(); ?>">
-                <img src="../wp-content/plugins/ivs-meeloop-portaal/includes/views/assets/images/ivs-logo-black.png" alt=""
+                <img src="../wp-content/plugins/ivs-meeloop-portaal/includes/views/assets/images/#" alt=""
                 class="dashboard__logo" width="250">
             </a>
         </header>
@@ -16,7 +16,7 @@
                     <li>U bent niet ingelogd</li>
                     <li>U heeft niet de juiste permissies</li>
                 </ol>
-                <p>Wanneer het probleem zich blijft voordoen, kunt u contact opnemen met <a href="mailto:support@stichtingivs.nl">support@stichtingivs.nl</a>.</p>
+                <p>Wanneer het probleem zich blijft voordoen, kunt u contact opnemen met <a href="mailto:johndoe@gmail.com">johndoe@gmail.com</a>.</p>
             </div>
         </main>
     </div>
