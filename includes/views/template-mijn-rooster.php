@@ -28,7 +28,7 @@ if ( ! is_user_logged_in() ) {
     <div class="dashboard">
         <header class="dashboard__header">
             <a href="<?php echo get_site_url() . '/dashboard'?>">
-                <img src="../wp-content/plugins/ivs-meeloop-portaal/includes/views/assets/images/ivs-logo-black.png" alt=""
+                <img src="../wp-content/plugins/ivs-meeloop-portaal/includes/views/assets/images/#" alt=""
                 class="dashboard__logo" width="250">
             </a>
         </header> <!-- .dashboard__header -->
